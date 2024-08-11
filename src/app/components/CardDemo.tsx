@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
@@ -15,7 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { questions as originalQuestions, Question } from "../data"; // Import the original questions
+import { questions as originalQuestions, type Question } from "../data"; // Import the original questions
 import { useState, useEffect } from "react";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
@@ -67,10 +65,13 @@ export function CardDemo({ className, ...props }: CardProps) {
 
   const handleCheckAnswer = () => {
     setShowAnswer(true);
+
     const correctAnswer = currentQuestion.multiSelect
-      ? selectedOptions.sort().join(",") ===
-        currentQuestion.answer.sort().join(",")
+      ? Array.isArray(currentQuestion.answer) &&
+        selectedOptions.sort().join(",") ===
+          currentQuestion.answer.sort().join(",")
       : selectedOptions[0] === currentQuestion.answer;
+
     setIsCorrect(correctAnswer);
   };
 
