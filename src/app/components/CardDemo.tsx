@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 "use client";
 import { ArrowRight, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -10,7 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { questions as originalQuestions } from "../data"; // Import the original questions
+import { questions as originalQuestions, Question } from "../data"; // Import the original questions
 import { useState, useEffect } from "react";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
@@ -27,7 +32,9 @@ function shuffleArray(array: any[]) {
 }
 
 export function CardDemo({ className, ...props }: CardProps) {
-  const [shuffledQuestions, setShuffledQuestions] = useState(originalQuestions); // State to hold shuffled questions
+  const [shuffledQuestions, setShuffledQuestions] = useState(() =>
+    shuffleArray(originalQuestions),
+  ); // State to hold shuffled questions
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -38,7 +45,11 @@ export function CardDemo({ className, ...props }: CardProps) {
     setShuffledQuestions(shuffleArray(originalQuestions));
   }, []);
 
-  const currentQuestion = shuffledQuestions[currentQuestionIndex];
+  const currentQuestion: Question = shuffledQuestions[currentQuestionIndex];
+
+  if (!currentQuestion) {
+    return null; // Or display a loading state or fallback UI
+  }
 
   const handleOptionChange = (option: string) => {
     if (showAnswer) return; // Prevent changes if the answer has been checked
