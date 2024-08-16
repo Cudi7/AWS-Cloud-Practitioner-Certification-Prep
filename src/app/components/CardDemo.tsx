@@ -13,41 +13,30 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { questions as originalQuestions, type Question } from "../data"; // Import the original questions
-import { useState, useEffect } from "react";
+import { type Question } from "../data"; // Import the Question type
+import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle, CheckCircle } from "lucide-react";
 
-type CardProps = React.ComponentProps<typeof Card>;
-
-// Utility function to shuffle an array
-function shuffleArray(array: any[]) {
-  return array
-    .map((value) => ({ value, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .map(({ value }) => value);
+interface CardDemoProps extends React.ComponentProps<typeof Card> {
+  questions: Question[];
 }
 
-export function CardDemo({ className, ...props }: CardProps) {
+export function CardDemo({ className, ...props }: CardDemoProps) {
   const [hasStarted, setHasStarted] = useState(false); // State to track if the quiz has started
-  const [shuffledQuestions, setShuffledQuestions] = useState(() =>
-    shuffleArray(originalQuestions),
-  ); // State to hold shuffled questions
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [showAnswer, setShowAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
-  useEffect(() => {
-    // Shuffle the questions when the component mounts
-    setShuffledQuestions(shuffleArray(originalQuestions));
-  }, []);
+  const { questions } = props;
 
-  const currentQuestion: Question = shuffledQuestions[currentQuestionIndex];
+  const currentQuestion: Question | undefined =
+    questions[currentQuestionIndex ?? 0];
 
   if (!currentQuestion) {
-    return null; // Or display a loading state or fallback UI
+    return null; // Or handle this case appropriately
   }
 
   const handleOptionChange = (option: string) => {
@@ -80,9 +69,7 @@ export function CardDemo({ className, ...props }: CardProps) {
     setShowAnswer(false);
     setSelectedOptions([]);
     setIsCorrect(null);
-    setCurrentQuestionIndex(
-      (prevIndex) => (prevIndex + 1) % shuffledQuestions.length,
-    );
+    setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
   };
 
   const handleStartQuiz = () => {

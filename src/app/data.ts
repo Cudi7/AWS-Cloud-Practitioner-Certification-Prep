@@ -6,7 +6,16 @@ export type Question = {
   multiSelect: boolean;
 };
 
-export const questions: Question[] = [
+// Utility function to shuffle an array using the Fisher-Yates algorithm
+function shuffleArray(array: Question[]): Question[] {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j]!, array[i]!]; // Swap elements with non-null assertion
+  }
+  return array;
+}
+
+export const shuffledQuestions: Question[] = shuffleArray([
   {
     question:
       "1. Which AWS service will help a company identify the user who deleted an Amazon EC2 instance yesterday?",
@@ -3653,4 +3662,4 @@ export const questions: Question[] = [
       "AWS Glue is a fully managed ETL service that makes it easy to prepare and load data for analytics, enabling you to categorize, clean, enrich, and move data between various data stores.",
     multiSelect: false,
   },
-];
+]);
