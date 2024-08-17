@@ -81,6 +81,13 @@ export function CardDemo({ className }: CardDemoProps) {
         <Navbar />
         <main className="flex flex-col items-center justify-center text-black dark:text-white">
           <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
+            <h1 className="text-center text-2xl font-extrabold tracking-tight text-black dark:text-white">
+              AWS{" "}
+              <span className="text-indigo-500 dark:text-indigo-400">
+                Cloud Practitioner
+              </span>{" "}
+              Certification Prep
+            </h1>
             {!hasStarted ? (
               <div className="flex items-center justify-center gap-5">
                 <Button size="lg" onClick={handleStartQuiz}>
