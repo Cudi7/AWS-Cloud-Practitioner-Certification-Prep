@@ -13,28 +13,24 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { type Question } from "../data"; // Import the Question type
+import { shuffledQuestions, type Question } from "../data"; // Import the Question type
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle, CheckCircle } from "lucide-react";
 import { Navbar } from "./navbar";
 
-interface CardDemoProps extends React.ComponentProps<typeof Card> {
-  questions: Question[];
-}
+type CardDemoProps = React.ComponentProps<typeof Card>;
 
-export function CardDemo({ className, ...props }: CardDemoProps) {
+export function CardDemo({ className }: CardDemoProps) {
   const [hasStarted, setHasStarted] = useState(false); // State to track if the quiz has started
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [showAnswer, setShowAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
-  const { questions } = props;
-
   const currentQuestion: Question | undefined =
-    questions[currentQuestionIndex ?? 0];
+    shuffledQuestions[currentQuestionIndex ?? 0];
 
   if (!currentQuestion) {
     return null; // Or handle this case appropriately
@@ -70,7 +66,9 @@ export function CardDemo({ className, ...props }: CardDemoProps) {
     setShowAnswer(false);
     setSelectedOptions([]);
     setIsCorrect(null);
-    setCurrentQuestionIndex((prevIndex) => (prevIndex + 1) % questions.length);
+    setCurrentQuestionIndex(
+      (prevIndex) => (prevIndex + 1) % shuffledQuestions.length,
+    );
   };
 
   const handleStartQuiz = () => {
@@ -92,10 +90,7 @@ export function CardDemo({ className, ...props }: CardDemoProps) {
               </div>
             ) : (
               <>
-                <Card
-                  className={cn(className, "max-w-2xl dark:bg-gray-800")}
-                  {...props}
-                >
+                <Card className={cn(className, "max-w-xl dark:bg-gray-800")}>
                   <CardHeader>
                     <CardTitle>Quiz Question</CardTitle>
                     <CardDescription className="dark:text-gray-400">
