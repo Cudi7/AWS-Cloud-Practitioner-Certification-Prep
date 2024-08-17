@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { ModeToggle } from "./mode-toggle";
 
 export function Navbar() {
@@ -20,13 +21,18 @@ export function Navbar() {
           >
             Rankings
           </a>
-
+*/}
           <a
             className="text-sm/6 font-medium text-zinc-700 outline-blue-500 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
-            href="https://tailwindui.com/templates/catalyst"
+            href="https://buymeacoffee.com/cudi7"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Buy me a coffee <span aria-hidden="true">→</span>
-          </a> */}
+            <img
+              alt="buy me a coffe img"
+              src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=cudi7&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff"
+            />
+          </a>
           <ModeToggle />
         </div>
       </div>
