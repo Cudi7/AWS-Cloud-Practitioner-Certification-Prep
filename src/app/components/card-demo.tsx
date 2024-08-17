@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 "use client";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -85,7 +85,10 @@ export function CardDemo({ className, ...props }: CardDemoProps) {
           <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
             {!hasStarted ? (
               <div className="flex items-center justify-center gap-5">
-                <Button onClick={handleStartQuiz}>Start Quiz</Button>
+                <Button size="lg" onClick={handleStartQuiz}>
+                  Start Quiz
+                  <Play className="ml-2" size={20} />
+                </Button>
               </div>
             ) : (
               <>
