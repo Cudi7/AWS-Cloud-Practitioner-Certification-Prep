@@ -3662,4 +3662,158 @@ export const shuffledQuestions: Question[] = shuffleArray([
       "AWS Glue is a fully managed ETL service that makes it easy to prepare and load data for analytics, enabling you to categorize, clean, enrich, and move data between various data stores.",
     multiSelect: false,
   },
+  {
+    question:
+      "208. Which AWS service allows you to manage and deploy containerized applications without needing to manage the underlying infrastructure?",
+    options: [
+      "A. Amazon ECS",
+      "B. AWS Fargate",
+      "C. Amazon EC2",
+      "D. AWS Lambda",
+    ],
+    answer: "B. AWS Fargate",
+    explanation:
+      "AWS Fargate allows you to run containers without managing the underlying EC2 instances. It abstracts the infrastructure management away from the user.",
+    multiSelect: false,
+  },
+  {
+    question:
+      "209. A company wants to implement a disaster recovery solution that automatically backs up data and systems to another AWS Region. Which AWS service should they use?",
+    options: [
+      "A. AWS Backup",
+      "B. Amazon S3 Cross-Region Replication",
+      "C. AWS Elastic Disaster Recovery",
+      "D. Amazon RDS Multi-AZ",
+    ],
+    answer: "C. AWS Elastic Disaster Recovery",
+    explanation:
+      "AWS Elastic Disaster Recovery helps you recover applications in AWS in the event of a disaster by replicating data across regions.",
+    multiSelect: false,
+  },
+  {
+    question:
+      "210. A company needs a service that provides real-time analysis of log data and the ability to search and visualize it. Which AWS service should they use?",
+    options: [
+      "A. AWS CloudTrail",
+      "B. Amazon CloudWatch Logs",
+      "C. Amazon Elasticsearch Service (now Amazon OpenSearch Service)",
+      "D. AWS Config",
+    ],
+    answer: "C. Amazon Elasticsearch Service (now Amazon OpenSearch Service)",
+    explanation:
+      "Amazon OpenSearch Service (formerly Amazon Elasticsearch Service) allows for real-time search, analysis, and visualization of log data.",
+    multiSelect: false,
+  },
+  {
+    question:
+      "211. Which AWS service provides a fully managed environment to develop, build, and deploy applications in a consistent environment?",
+    options: [
+      "A. AWS CodePipeline",
+      "B. AWS CodeBuild",
+      "C. AWS Elastic Beanstalk",
+      "D. AWS CloudFormation",
+    ],
+    answer: "C. AWS Elastic Beanstalk",
+    explanation:
+      "AWS Elastic Beanstalk provides a fully managed service for deploying and scaling web applications and services developed with various programming languages.",
+    multiSelect: false,
+  },
+  {
+    question:
+      "212. A company needs to ensure that their AWS environment meets specific compliance standards. Which AWS service allows for automated compliance checks and governance?",
+    options: [
+      "A. AWS Config",
+      "B. AWS CloudTrail",
+      "C. AWS Trusted Advisor",
+      "D. AWS Control Tower",
+    ],
+    answer: "A. AWS Config",
+    explanation:
+      "AWS Config enables continuous monitoring of your AWS resources for compliance, auditing, and governance.",
+    multiSelect: false,
+  },
+  {
+    question:
+      "213. Which AWS service provides the capability to run an event-driven code without provisioning or managing servers?",
+    options: [
+      "A. AWS Lambda",
+      "B. Amazon EC2",
+      "C. AWS Fargate",
+      "D. Amazon ECS",
+    ],
+    answer: "A. AWS Lambda",
+    explanation:
+      "AWS Lambda allows you to run code in response to events without managing the underlying infrastructure.",
+    multiSelect: false,
+  },
+  {
+    question:
+      "214. A company needs to securely connect their on-premises data center to their VPC in AWS. Which AWS service should they use?",
+    options: [
+      "A. AWS VPN",
+      "B. AWS Direct Connect",
+      "C. Amazon VPC Peering",
+      "D. AWS Transit Gateway",
+    ],
+    answer: "B. AWS Direct Connect",
+    explanation:
+      "AWS Direct Connect provides a dedicated network connection from your on-premises data center to AWS, offering higher bandwidth and more reliable connectivity.",
+    multiSelect: false,
+  },
+  {
+    question:
+      "215. Which AWS service provides an object-level storage solution that can be accessed via the web and scales automatically to accommodate increasing storage needs?",
+    options: [
+      "A. Amazon S3",
+      "B. Amazon EFS",
+      "C. Amazon RDS",
+      "D. AWS Storage Gateway",
+    ],
+    answer: "A. Amazon S3",
+    explanation:
+      "Amazon S3 is an object storage service that offers industry-leading scalability, data availability, security, and performance.",
+    multiSelect: false,
+  },
+  {
+    question:
+      "216. Which AWS service should be used to centrally manage and automate the tasks involved in maintaining consistent security and compliance across multiple AWS accounts?",
+    options: [
+      "A. AWS Organizations",
+      "B. AWS IAM",
+      "C. AWS Control Tower",
+      "D. AWS Trusted Advisor",
+    ],
+    answer: "C. AWS Control Tower",
+    explanation:
+      "AWS Control Tower offers the easiest way to set up and govern a secure, multi-account AWS environment based on AWS best practices.",
+    multiSelect: false,
+  },
+  {
+    question:
+      "217. Which AWS service provides an enterprise search solution that allows you to search and index content across your organization’s data sources?",
+    options: [
+      "A. Amazon Kendra",
+      "B. Amazon Athena",
+      "C. Amazon OpenSearch Service",
+      "D. AWS Glue",
+    ],
+    answer: "A. Amazon Kendra",
+    explanation:
+      "Amazon Kendra is an intelligent search service powered by machine learning, making it easy to search across different content repositories.",
+    multiSelect: false,
+  },
+  {
+    question:
+      "218. A company needs to schedule and orchestrate a series of AWS Lambda functions to perform data processing. Which AWS service should they use?",
+    options: [
+      "A. AWS Step Functions",
+      "B. Amazon EventBridge",
+      "C. AWS Batch",
+      "D. AWS Glue",
+    ],
+    answer: "A. AWS Step Functions",
+    explanation:
+      "AWS Step Functions allows you to coordinate multiple AWS services into serverless workflows so that you can build and update applications quickly.",
+    multiSelect: false,
+  },
 ]);
