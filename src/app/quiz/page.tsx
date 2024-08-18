@@ -20,11 +20,7 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
 import { shuffledQuestions, type Question } from "../data";
 
-type QuizProps = {
-  className?: string;
-};
-
-export default function Quiz({ className }: QuizProps) {
+export default function Quiz() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -80,7 +76,7 @@ export default function Quiz({ className }: QuizProps) {
   };
 
   return (
-    <Card className={cn(className, "max-w-xl dark:bg-gray-800")}>
+    <Card className="max-w-xl dark:bg-gray-800">
       <CardHeader>
         <CardTitle>Quiz Question</CardTitle>
         <CardDescription className="dark:text-gray-400">
