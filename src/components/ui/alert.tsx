@@ -9,9 +9,9 @@ const alertVariants = cva(
     variants: {
       variant: {
         default:
-          "border-teal-500/50 text-teal-500 dark:border-teal-500 [&>svg]:text-teal-500 dark:border-teal-900/50 dark:text-teal-900 dark:dark:border-teal-900 dark:[&>svg]:text-teal-900",
+          "border-teal-500/50 text-teal-500 dark:border-teal-500 [&>svg]:text-teal-500 dark:border-teal-900/50 dark:text-teal-900 dark:dark:border-teal-600 dark:[&>svg]:text-teal-600",
         destructive:
-          "border-red-500/50 text-red-500 dark:border-red-500 [&>svg]:text-red-500 dark:border-red-900/50 dark:text-red-900 dark:dark:border-red-900 dark:[&>svg]:text-red-900",
+          "border-red-500/50 text-red-500 dark:border-red-500 [&>svg]:text-red-500 dark:border-red-900/50 dark:text-red-900 dark:dark:border-red-600 dark:[&>svg]:text-red-600",
       },
     },
     defaultVariants: {
