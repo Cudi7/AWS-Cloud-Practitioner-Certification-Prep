@@ -1,7 +1,11 @@
 "use client";
 
-import { ArrowRight, Check } from "lucide-react";
+import { useState, useRef } from "react";
+
+import { ArrowRight, Check, AlertCircle, CheckCircle } from "lucide-react";
+
 import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,11 +15,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { shuffledQuestions, type Question } from "../data"; // Import the Question type
-import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
-import { AlertCircle, CheckCircle } from "lucide-react";
+
+import { shuffledQuestions, type Question } from "../data";
 
 type QuizProps = React.ComponentProps<typeof Card>;
 
@@ -24,6 +27,8 @@ export default function Quiz({ className }: QuizProps) {
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [showAnswer, setShowAnswer] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+
+  const answerSectionRef = useRef<HTMLDivElement>(null); // Create a ref
 
   const currentQuestion: Question | undefined =
     shuffledQuestions[currentQuestionIndex ?? 0];
@@ -56,6 +61,11 @@ export default function Quiz({ className }: QuizProps) {
       : selectedOptions[0] === currentQuestion.answer;
 
     setIsCorrect(correctAnswer);
+
+    // Scroll to the answer section after checking the answer
+    setTimeout(() => {
+      answerSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 0);
   };
 
   const handleNextQuestion = () => {
@@ -108,7 +118,7 @@ export default function Quiz({ className }: QuizProps) {
           ))}
         </div>
         {showAnswer && (
-          <div className="mt-4 space-y-2">
+          <div ref={answerSectionRef} className="mt-4 space-y-2">
             {isCorrect !== null && (
               <Alert
                 variant={isCorrect ? "default" : "destructive"}

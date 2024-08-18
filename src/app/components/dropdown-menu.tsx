@@ -1,6 +1,6 @@
-import { Menu } from "lucide-react";
+import { Menu } from "lucide-react"; // External library import
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"; // UI components
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +9,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ModeToggle } from "./mode-toggle";
+
+import { ModeToggle } from "./mode-toggle"; // Local component import
 
 export function DropdownMenuDemo() {
   return (

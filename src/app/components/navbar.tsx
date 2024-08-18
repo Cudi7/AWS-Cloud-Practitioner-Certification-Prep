@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+
 import { DropdownMenuDemo } from "./dropdown-menu";
 import { ModeToggle } from "./mode-toggle";
 

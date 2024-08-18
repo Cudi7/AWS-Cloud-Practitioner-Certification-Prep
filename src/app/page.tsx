@@ -1,6 +1,3 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Play } from "lucide-react";
 import { ButtonActions } from "./components/button-actions";
 
 export default function HomePage() {
