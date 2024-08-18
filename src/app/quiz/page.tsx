@@ -20,7 +20,9 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
 import { shuffledQuestions, type Question } from "../data";
 
-type QuizProps = React.ComponentProps<typeof Card>;
+type QuizProps = {
+  className?: string;
+};
 
 export default function Quiz({ className }: QuizProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
