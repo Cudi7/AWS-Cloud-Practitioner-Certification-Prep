@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import { DropdownMenuDemo } from "./dropdown-menu";
 import { ModeToggle } from "./mode-toggle";
 
@@ -6,7 +7,7 @@ export function Navbar() {
   return (
     <div className="px-4 pb-5 pt-7 ring-1 ring-zinc-950/5 dark:bg-gray-900 dark:ring-white/5">
       <div className="mx-auto flex items-center justify-between gap-5 px-2 sm:gap-0 sm:px-4 lg:max-w-7xl">
-        <div className="flex items-center gap-2 sm:gap-4">
+        <Link href="/" className="flex items-center gap-2 sm:gap-4">
           <svg
             className="h-6 text-zinc-950 dark:text-white forced-colors:text-[CanvasText]"
             fill="currentColor"
@@ -30,7 +31,7 @@ export function Navbar() {
               C02
             </span>{" "}
           </h1>
-        </div>
+        </Link>
         <div className="hidden items-center gap-4 sm:flex sm:gap-8">
           {/* <a
             className="text-sm/6 font-medium text-zinc-700 outline-blue-500 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
