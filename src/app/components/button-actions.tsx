@@ -21,7 +21,7 @@ export function ButtonActions() {
 
   if (loading) {
     return (
-      <div className="mx-auto w-full max-w-sm rounded-md p-4 shadow">
+      <div className="mx-auto w-full max-w-sm rounded-md p-4">
         <div className="flex animate-spin space-x-4">
           <div className="h-10 w-10 rounded-full bg-slate-700"></div>
         </div>
@@ -40,7 +40,7 @@ export function ButtonActions() {
           </Link>
         </Button>
       ) : (
-        <div className="flex space-x-4">
+        <div className="flex flex-col gap-5 sm:flex-row sm:gap-4">
           <Button asChild size="lg">
             <Link href="/quiz">
               Resume Quiz
