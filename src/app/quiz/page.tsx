@@ -1,11 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
-
+import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Check, AlertCircle, CheckCircle } from "lucide-react";
-
 import { cn } from "@/lib/utils";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,7 +15,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 
-import { shuffledQuestions, type Question } from "../data";
+import { questionsArray, type Question } from "../data";
 
 export default function Quiz() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -28,8 +25,15 @@ export default function Quiz() {
 
   const answerSectionRef = useRef<HTMLDivElement>(null); // Create a ref
 
+  useEffect(() => {
+    const savedProgress = localStorage.getItem("quizProgress");
+    if (savedProgress) {
+      setCurrentQuestionIndex(parseInt(savedProgress));
+    }
+  }, []);
+
   const currentQuestion: Question | undefined =
-    shuffledQuestions[currentQuestionIndex ?? 0];
+    questionsArray[currentQuestionIndex ?? 0];
 
   if (!currentQuestion) {
     return null; // Or handle this case appropriately
@@ -70,9 +74,10 @@ export default function Quiz() {
     setShowAnswer(false);
     setSelectedOptions([]);
     setIsCorrect(null);
-    setCurrentQuestionIndex(
-      (prevIndex) => (prevIndex + 1) % shuffledQuestions.length,
-    );
+    const nextQuestionIndex =
+      (currentQuestionIndex + 1) % questionsArray.length;
+    setCurrentQuestionIndex(nextQuestionIndex);
+    localStorage.setItem("quizProgress", nextQuestionIndex.toString()); // Save the next question index
   };
 
   return (

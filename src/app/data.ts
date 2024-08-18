@@ -4,10 +4,11 @@ export type Question = {
   answer: string | string[];
   explanation: string;
   multiSelect: boolean;
+  id: number;
 };
 
 // Utility function to shuffle an array using the Fisher-Yates algorithm
-function shuffleArray(array: Question[]): Question[] {
+export function shuffleArray(array: Question[]): Question[] {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j]!, array[i]!]; // Swap elements with non-null assertion
@@ -15,7 +16,7 @@ function shuffleArray(array: Question[]): Question[] {
   return array;
 }
 
-export const shuffledQuestions: Question[] = shuffleArray([
+export const questionsArray: Question[] = [
   {
     question:
       "1. Which AWS service will help a company identify the user who deleted an Amazon EC2 instance yesterday?",
@@ -29,6 +30,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS CloudTrail is a service that enables you to track user activity and API usage across your AWS account, essential for identifying specific actions such as deleting an EC2 instance.",
     multiSelect: false,
+    id: 1,
   },
   {
     question:
@@ -43,6 +45,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon CloudFront is a content delivery network (CDN) that integrates with other AWS services to deliver content with low latency and high transfer speeds globally.",
     multiSelect: false,
+    id: 2,
   },
   {
     question:
@@ -57,6 +60,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Both Amazon EFS and Amazon FSx offer file storage solutions, enabling simultaneous access to files and folders over a network.",
     multiSelect: false,
+    id: 3,
   },
   {
     question:
@@ -75,6 +79,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "By migrating to the AWS Cloud, the company can eliminate costs associated with data center operations and physical server hardware.",
     multiSelect: true,
+    id: 4,
   },
   {
     question:
@@ -89,6 +94,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Security groups act as firewalls at the instance level, allowing you to control inbound and outbound access for Amazon EC2 instances.",
     multiSelect: false,
+    id: 5,
   },
   {
     question: "6. An Availability Zone consists of:",
@@ -102,6 +108,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "An Availability Zone in AWS consists of one or more isolated data centers within a region, each with independent power, cooling, and physical security.",
     multiSelect: false,
+    id: 6,
   },
   {
     question:
@@ -120,6 +127,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Making data-driven decisions and testing systems at production scale are AWS cloud design principles that help build secure, efficient, and operationally sound systems.",
     multiSelect: true,
+    id: 7,
   },
   {
     question:
@@ -134,6 +142,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Compute Optimizer provides recommendations to help users get right-sized Amazon EC2 instances based on the workload's historical usage data.",
     multiSelect: false,
+    id: 8,
   },
   {
     question:
@@ -152,6 +161,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Patching AWS networking devices and providing physical security for compute resources are tasks that are AWS responsibilities.",
     multiSelect: true,
+    id: 9,
   },
   {
     question:
@@ -166,6 +176,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Using Amazon RDS with a MySQL database enables automating tasks such as patching and backups.",
     multiSelect: false,
+    id: 10,
   },
   {
     question:
@@ -180,6 +191,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Outposts allows running AWS services on premises, extending AWS to physical environments while maintaining a consistent cloud experience.",
     multiSelect: false,
+    id: 11,
   },
   {
     question:
@@ -194,6 +206,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon EventBridge is a serverless solution that makes it easy to connect application data from multiple sources without requiring additional code.",
     multiSelect: false,
+    id: 12,
   },
   {
     question:
@@ -208,6 +221,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Auto Scaling helps ensure the application can meet sudden increases in demand cost-effectively.",
     multiSelect: false,
+    id: 13,
   },
   {
     question:
@@ -223,6 +237,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS Cloud provides massive economies of scale and the ability to launch resources globally in minutes.",
     multiSelect: true,
+    id: 14,
   },
   {
     question:
@@ -241,6 +256,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Determining application dependencies and providing user access using AWS IAM are customer responsibilities per the AWS Shared Responsibility Model.",
     multiSelect: true,
+    id: 15,
   },
   {
     question:
@@ -255,6 +271,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS Well-Architected Framework promotes AWS Cloud architectural best practices to help design and operate systems that are reliable, secure, efficient, and cost-effective.",
     multiSelect: false,
+    id: 16,
   },
   {
     question:
@@ -269,6 +286,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Using Amazon ECS to break a monolithic architecture into microservices is an example of a loosely coupled architecture, where components are independent and communicate through well-defined interfaces.",
     multiSelect: false,
+    id: 17,
   },
   {
     question:
@@ -283,6 +301,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "This scenario demonstrates increased business agility as a benefit of the AWS Cloud, enabling the company to quickly respond to market needs and launch marketing campaigns significantly faster.",
     multiSelect: false,
+    id: 18,
   },
   {
     question:
@@ -297,6 +316,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The company should use AWS Storage Gateway, specifically the Tape Gateway option, to integrate their existing backup workflows with AWS without the need for significant changes, allowing for efficient backup to the cloud.",
     multiSelect: false,
+    id: 19,
   },
   {
     question:
@@ -311,6 +331,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon GuardDuty is a service that provides threat detection and continuous monitoring for the AWS environment, analyzing network and account activity to identify anomalous or unauthorized behavior.",
     multiSelect: false,
+    id: 20,
   },
   {
     question:
@@ -325,6 +346,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon CloudWatch can provide detailed metrics about Amazon EC2 instance utilization, including the percentage of allocated compute units in use, allowing users to monitor and optimize performance.",
     multiSelect: false,
+    id: 21,
   },
   {
     question:
@@ -339,6 +361,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "VPC Flow Logs enables users to capture information about the IP traffic flowing to and from network interfaces in their VPC, aiding in troubleshooting network connectivity between Amazon EC2 instances.",
     multiSelect: false,
+    id: 22,
   },
   {
     question: "23. Which AWS service provides highly durable object storage?",
@@ -352,6 +375,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon S3 provides highly durable object storage, designed to store and retrieve any amount of data from anywhere, offering scalability, security, durability, and high availability.",
     multiSelect: false,
+    id: 23,
   },
   {
     question:
@@ -366,6 +390,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Direct Connect allows users to establish a dedicated private network connection from their internal network to AWS, which can reduce network costs, increase bandwidth, and provide a more consistent connection than internet-based connections.",
     multiSelect: false,
+    id: 24,
   },
   {
     question:
@@ -380,6 +405,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The company should use AWS Storage Gateway, specifically the Tape Gateway option, to integrate their existing backup workflows with AWS without the need for significant changes, allowing for efficient backup to the cloud.",
     multiSelect: false,
+    id: 25,
   },
   {
     question:
@@ -394,6 +420,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon GuardDuty is a service that provides threat detection and continuous monitoring for the AWS environment, analyzing network and account activity to identify anomalous or unauthorized behavior.",
     multiSelect: false,
+    id: 26,
   },
   {
     question:
@@ -408,6 +435,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon CloudWatch can provide detailed metrics about Amazon EC2 instance utilization, including the percentage of allocated compute units in use, allowing users to monitor and optimize performance.",
     multiSelect: false,
+    id: 27,
   },
   {
     question:
@@ -422,6 +450,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "VPC Flow Logs enables users to capture information about the IP traffic flowing to and from network interfaces in their VPC, aiding in troubleshooting network connectivity between Amazon EC2 instances.",
     multiSelect: false,
+    id: 28,
   },
   {
     question: "29. Which AWS service provides highly durable object storage?",
@@ -435,6 +464,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon S3 provides highly durable object storage, designed to store and retrieve any amount of data from anywhere, offering scalability, security, durability, and high availability.",
     multiSelect: false,
+    id: 29,
   },
   {
     question:
@@ -449,6 +479,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Operating Amazon EC2 instances across multiple AWS Regions can ensure high availability and service continuity even in the event of a failure or natural disaster in a specific geographic area.",
     multiSelect: false,
+    id: 30,
   },
   {
     question:
@@ -463,6 +494,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS CloudTrail is the service that allows users to record, monitor, and retain events related to API calls across their AWS account, providing visibility into user activity and operations performed within their AWS account.",
     multiSelect: false,
+    id: 31,
   },
   {
     question:
@@ -477,6 +509,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS WAF is the service that allows users to create customized rules to block malicious traffic patterns and protect their applications from common web threats.",
     multiSelect: false,
+    id: 32,
   },
   {
     question:
@@ -491,6 +524,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Redshift is the AWS data warehousing service, specifically designed for analytics of large volumes of data and ideal for feeding analytics dashboards with large datasets.",
     multiSelect: false,
+    id: 33,
   },
   {
     question:
@@ -506,6 +540,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Aurora and Amazon RDS are AWS services that offer solutions for hosting relational databases with predefined schemas, providing the ability to replicate, scale, and manage these databases efficiently.",
     multiSelect: true,
+    id: 34,
   },
   {
     question:
@@ -520,6 +555,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Directory Service for Microsoft Active Directory allows the company to utilize a managed service for Active Directory in AWS, making it easier to integrate and manage users and security resources for the new mobile application.",
     multiSelect: false,
+    id: 35,
   },
   {
     question:
@@ -538,6 +574,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The principles of automatically scaling to meet demand and automatically recovering from failure support the reliability pillar of the AWS Well-Architected Framework, ensuring systems can handle changes in demand and recover from disruptions.",
     multiSelect: true,
+    id: 36,
   },
   {
     question:
@@ -552,6 +589,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon CloudWatch can provide this information through metrics that detail Amazon EC2 instance utilization, allowing users to view and optimize resource usage.",
     multiSelect: false,
+    id: 37,
   },
   {
     question:
@@ -566,6 +604,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "VPC Flow Logs is a feature that allows users to capture information about network traffic to and from their VPCs, aiding in troubleshooting connectivity.",
     multiSelect: false,
+    id: 38,
   },
   {
     question: "39. Which AWS service provides highly durable object storage?",
@@ -579,6 +618,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon S3 provides highly durable object storage, ideal for a wide variety of cloud storage use cases.",
     multiSelect: false,
+    id: 39,
   },
   {
     question:
@@ -593,6 +633,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Direct Connect allows users to establish a dedicated private network connection from their internal networks to AWS, providing a more consistent network experience with higher bandwidth.",
     multiSelect: false,
+    id: 40,
   },
   {
     question:
@@ -607,6 +648,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Using EC2 instances across multiple AWS Regions can help ensure high availability of the application, even in the event of natural disasters affecting a specific geographic area.",
     multiSelect: false,
+    id: 41,
   },
   {
     question:
@@ -621,6 +663,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The recommended method for securing sensitive data in transit on AWS is using SSL/TLS (Secure Socket Layer/Transport Layer Security), which encrypts data in transit and ensures secure communication.",
     multiSelect: false,
+    id: 42,
   },
   {
     question:
@@ -635,6 +678,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon RDS automates database administration tasks like backups, patching, and recovery, which benefits database administrators by reducing manual workload.",
     multiSelect: false,
+    id: 43,
   },
   {
     question:
@@ -649,6 +693,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Elastic Load Balancer (ELB) is the AWS service designed to automatically distribute incoming traffic across multiple Amazon EC2 instances, ensuring high availability and scalability of the application.",
     multiSelect: false,
+    id: 44,
   },
   {
     question: "45. What is the purpose of AWS CloudFormation?",
@@ -662,6 +707,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS CloudFormation allows users to provision and manage AWS resources, using 'templates' to create and manage a collection of related resources, automating your infrastructure as code.",
     multiSelect: false,
+    id: 45,
   },
   {
     question: "46. How are costs calculated in Amazon S3?",
@@ -675,6 +721,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Costs in Amazon S3 are calculated based on the total size of data stored and data transfer, including object storage, requests, and data transfers.",
     multiSelect: false,
+    id: 46,
   },
   {
     question:
@@ -689,6 +736,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Inspector is an automated security assessment service that helps improve the security and compliance of applications by detecting security vulnerabilities and flaws.",
     multiSelect: false,
+    id: 47,
   },
   {
     question: "48. Which characteristic describes Amazon DynamoDB?",
@@ -702,6 +750,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon DynamoDB is a fast and flexible NoSQL database service, designed for internet-scale applications, providing high performance, scalability, and reliability.",
     multiSelect: false,
+    id: 48,
   },
   {
     question: "49. What does AWS Lambda allow developers to do?",
@@ -715,6 +764,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Lambda allows developers to run code in response to triggers such as data changes or user requests, without provisioning or managing servers.",
     multiSelect: false,
+    id: 49,
   },
   {
     question: "50. What is the primary purpose of Amazon S3?",
@@ -728,6 +778,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The primary purpose of Amazon S3 is to provide scalable object storage, with data durability and availability for a wide range of use cases.",
     multiSelect: false,
+    id: 50,
   },
   {
     question: "51. What is AWS Direct Connect?",
@@ -741,6 +792,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Direct Connect is a service that provides a dedicated network connection from your on-premises infrastructure to AWS, reducing network costs, increasing bandwidth, and providing a more consistent network experience.",
     multiSelect: false,
+    id: 51,
   },
   {
     question:
@@ -755,6 +807,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS CloudTrail is a service that provides a history of AWS API calls for your AWS account, allowing users to audit and review account activity.",
     multiSelect: false,
+    id: 52,
   },
   {
     question:
@@ -769,6 +822,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Inspector is an automated security assessment service that helps improve the security and compliance of applications deployed on AWS. After performing an assessment, Amazon Inspector produces a detailed list of security findings prioritized by level of severity.",
     multiSelect: false,
+    id: 53,
   },
   {
     question: "54. Which factors impact costs in the AWS Cloud? (Select TWO.)",
@@ -786,6 +840,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Data transfer out without acceleration and compute resources that are currently in use are factors that impact costs in the AWS Cloud.",
     multiSelect: true,
+    id: 54,
   },
   {
     question:
@@ -800,6 +855,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "One of the cost efficiency principles related to the AWS cloud is to properly size services based on capacity needs. This means choosing the most appropriate type and size of AWS resources to meet the performance and scalability requirements of applications, avoiding over-provisioning or under-provisioning.",
     multiSelect: false,
+    id: 55,
   },
   {
     question:
@@ -814,6 +870,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS service or feature that the company can use to group users and apply permissions to the group is AWS Identity and Access Management (IAM). IAM allows creating and managing users and groups and assigning policies that define permissions for the users in the groups.",
     multiSelect: false,
+    id: 56,
   },
   {
     question:
@@ -829,6 +886,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Placing the EC2 instances in two separate Availability Zones within the same AWS Region is the best way to meet the requirement. Availability Zones are isolated locations within an AWS Region that have independent power, cooling, and physical security, and are connected to each other with high-bandwidth, low-latency networks.",
     multiSelect: false,
+    id: 57,
   },
   {
     question:
@@ -843,6 +901,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS service that the engineer should use is AWS CloudHSM. AWS CloudHSM provides dedicated hardware security modules (HSMs) that enable customers to create, control, and manage their own cryptographic keys in the AWS cloud.",
     multiSelect: false,
+    id: 58,
   },
   {
     question:
@@ -857,6 +916,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answer is C because Amazon Cognito provides user identity and authentication for web and mobile apps. Amazon Cognito allows users to sign in with their social media, email, or online shopping accounts.",
     multiSelect: false,
+    id: 59,
   },
   {
     question:
@@ -871,6 +931,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Increased business agility is a benefit of migrating to the AWS cloud in terms of improving time-to-market.",
     multiSelect: false,
+    id: 60,
   },
   {
     question:
@@ -885,6 +946,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS Enterprise Support plan is the highest tier of support that provides customers with a concierge-like service where the primary focus is to help them achieve their outcomes and find success in the cloud.",
     multiSelect: false,
+    id: 61,
   },
   {
     question:
@@ -899,6 +961,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Budgets allows you to set custom budgets that alert you when your costs or usage exceed (or are forecasted to exceed) your budgeted amount.",
     multiSelect: false,
+    id: 62,
   },
   {
     question:
@@ -913,6 +976,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Cost Optimization is the pillar of the AWS Well-Architected Framework that focuses on the return on investment of migrating to the AWS cloud.",
     multiSelect: false,
+    id: 63,
   },
   {
     question:
@@ -927,6 +991,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The Operational Excellence pillar of the AWS Well-Architected Framework focuses on the ability to run workloads effectively, gain insight into operations, and continuously improve supporting processes and procedures.",
     multiSelect: false,
+    id: 64,
   },
   {
     question:
@@ -942,6 +1007,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS account root user is the first login identity available when an AWS account is created. It has complete access to all AWS services and resources in the account.",
     multiSelect: false,
+    id: 65,
   },
   {
     question:
@@ -957,6 +1023,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct options are B and E because AWS Online Tech Talks and AWS Classroom Training are options made available by AWS for customers who want to learn about cloud security in an instructor-led environment.",
     multiSelect: true,
+    id: 66,
   },
   {
     question:
@@ -971,6 +1038,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Simple Notification Service (Amazon SNS) is a service that offers fully managed pub/sub messaging. Pub/sub messaging is a pattern that uses a combination of publishers and subscribers.",
     multiSelect: false,
+    id: 67,
   },
   {
     question:
@@ -989,6 +1057,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answers are D and E because AWS provides high availability and AWS provides economies of scale, which are advantages that a company receives by moving an on-premises production workload to AWS. High availability means that AWS has a global infrastructure that enables customers to deploy their applications and data across multiple regions and Availability Zones. This increases the fault tolerance and resiliency of their applications and reduces the impact of failures. Economies of scale mean that AWS can achieve lower variable costs than customers can on their own. This allows customers to pay only for the resources they use and scale up or down as needed.",
     multiSelect: true,
+    id: 68,
   },
   {
     question:
@@ -1003,6 +1072,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Reliability is the cloud concept that this architecture represents. Reliability is the ability of a system to recover from infrastructure or service disruptions, dynamically acquire computing resources to meet demand, and mitigate disruptions such as misconfigurations or transient network issues. Deploying an application across multiple AWS Regions and configuring automatic failover between those Regions increases the reliability of the application by reducing the impact of regional failures and increasing the availability of the application.",
     multiSelect: false,
+    id: 69,
   },
   {
     question:
@@ -1017,6 +1087,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "A benefit of decoupling an AWS cloud architecture is the ability to update components independently. Decoupling is a way of designing systems to reduce interdependencies and minimize the impact of changes. Decoupling allows components to interact with each other through well-defined interfaces, instead of direct references. This reduces the risk of failures and errors propagating throughout the system and enables greater scalability, availability, and maintainability. By decoupling an AWS cloud architecture, the user can update or modify one component without affecting the other components.",
     multiSelect: false,
+    id: 70,
   },
   {
     question:
@@ -1031,6 +1102,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon EC2 Auto Scaling is the AWS service or tool that can help the company launch the number of EC2 instances required to handle the workload. Amazon EC2 Auto Scaling automatically adjusts the capacity of EC2 instances based on demand and predefined scaling policies. Amazon EC2 Auto Scaling also helps improve availability and reduce costs by scaling in and out as needed.",
     multiSelect: false,
+    id: 71,
   },
   {
     question:
@@ -1049,6 +1121,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answers are A and C because security groups and network access control lists (network ACLs) are AWS services or features that allow CIDR block notation when providing an IP address range. Security groups act as a virtual firewall for the associated Amazon EC2 instances, controlling inbound and outbound traffic at the instance level. Network ACLs act as a firewall for the associated subnets, controlling inbound and outbound traffic at the subnet level. Both security groups and network ACLs use CIDR block notation to specify the IP address ranges that are allowed or denied.",
     multiSelect: true,
+    id: 72,
   },
   {
     question:
@@ -1063,8 +1136,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. It supports both key-value and document data models, and enables you to create tables that can store and retrieve any amount of data, and serve any level of request traffic. You can also use DynamoDB Streams to capture changes to data items in DynamoDB tables.",
     multiSelect: false,
+    id: 73,
   },
-
   {
     question:
       "74. Which AWS service can a user use to identify any security group that is allowing unrestricted inbound SSH traffic?",
@@ -1078,8 +1151,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answer for the question is D because AWS Trusted Advisor is an AWS service that can be used to perform the task of identifying any security group that is allowing unrestricted inbound SSH traffic. AWS Trusted Advisor inspects the customer's AWS environment and identifies ways to optimize their AWS infrastructure, improve security and performance, reduce costs, and monitor service quotas. One of the checks that Trusted Advisor performs is the Security Groups - Specific Ports Unrestricted check, which flags security groups that allow unrestricted access to specific ports such as port 22 for SSH. Customers can use this check to review and modify the security group rules to restrict SSH access to only authorized sources.",
     multiSelect: false,
+    id: 74,
   },
-
   {
     question:
       "75. A company wants to use the AWS Cloud to manage access and permissions for its third-party Software as a Service (SaaS) applications. The company wants to use a portal where end users can access the assigned AWS accounts and applications in the cloud.",
@@ -1093,6 +1166,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS IAM Identity Center (AWS Single Sign-On) is the AWS service that the company should use to meet the requirements for managing access and permissions for its third-party SaaS applications. AWS Single Sign-On is a cloud-based service that makes it easy to centrally manage single sign-on (SSO) access to multiple AWS accounts and business applications. You can use AWS Single Sign-On to enable your users to sign in to a user portal with their corporate credentials and access all their assigned AWS accounts and applications from one place.",
     multiSelect: false,
+    id: 75,
   },
   {
     question:
@@ -1107,8 +1181,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Route 53 is a highly available and scalable DNS web service. It is designed to give developers and businesses an extremely reliable and cost-effective way to route end users to Internet applications by translating names into the numeric IP addresses that computers use to connect to each other. Amazon Route 53 also offers other features like health checks, traffic management, domain name registration, and DNSSEC.",
     multiSelect: false,
+    id: 76,
   },
-
   {
     question: "77. What is the total amount of storage offered by Amazon S3?",
     options: ["A. 100MB", "B. 5 GB", "C. 5 TB", "D. Unlimited"],
@@ -1116,8 +1190,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon S3 offers unlimited storage for any amount of data. You can store as many objects as you want, and each object can be up to 5 terabytes in size. You only pay for the storage space you actually use, and there are no minimum commitments or upfront fees. Amazon S3 also provides high durability, availability, scalability, and security for your data.",
     multiSelect: false,
+    id: 77,
   },
-
   {
     question:
       "78. A large company has a workload that requires hardware to remain on-premises. The company wants to use the same AWS control plane and management services that it currently uses in the cloud.",
@@ -1131,8 +1205,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answer is C because AWS Outposts is an AWS service that allows the company to meet the requirements. AWS Outposts is a fully managed service that extends AWS infrastructure, services, APIs, and tools to virtually any data center, co-location space, or on-premises facility. AWS Outposts allows customers to run their workloads on the same hardware and software that AWS uses in its cloud, while maintaining local access and control. The other options are incorrect because they are not AWS services that allow the company to meet the requirements. AWS Device Farm is an AWS service that allows customers to test their mobile and web applications on real devices in the AWS cloud. AWS Fargate is an AWS service that allows customers to run containers without having to manage servers or clusters. AWS Ground Station is an AWS service that allows customers to communicate with satellites and download data from orbit.",
     multiSelect: false,
+    id: 78,
   },
-
   {
     question:
       "79. What are the responsibilities of a company that is using AWS Lambda? (Select TWO.)",
@@ -1147,8 +1221,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The responsibilities of a company that is using AWS Lambda are in-code security and code writing and updating. AWS Lambda is a serverless compute service that lets you run code without provisioning or managing servers, scaling or patching. AWS Lambda takes care of the security of the underlying infrastructure, such as the operating system, network, and firewall. However, the company is still responsible for the security of the code itself, such as encrypting sensitive data, validating input, and handling errors. The company is also responsible for writing and updating the code that defines the Lambda function and choosing the runtime environment, such as Node.js, Python, or Java. AWS Lambda does not require CPU resource selection, as it automatically allocates based on the memory configuration.",
     multiSelect: true,
+    id: 79,
   },
-
   {
     question:
       "80. Which of the following are customer responsibilities according to the AWS Shared Responsibility Model? (Select TWO.)",
@@ -1166,8 +1240,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS Shared Responsibility Model outlines how AWS and the customer share responsibility for security and compliance of the AWS environment. AWS is responsible for the security of the cloud, which includes the physical security of AWS facilities, infrastructure, hardware, software, and networking that run AWS services. The customer is responsible for security in the cloud, which includes security group configuration, encryption of customer data on AWS, AWS Lambda infrastructure management, and network bandwidth management of each AWS Region.",
     multiSelect: true,
+    id: 80,
   },
-
   {
     question:
       "81. Which AWS service should a cloud professional use to receive real-time guidance for provisioning resources, based on AWS best practices related to security, cost optimization, and service limits?",
@@ -1181,8 +1255,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Trusted Advisor is the AWS service that provides real-time guidance for provisioning resources, based on AWS best practices related to security, cost optimization, and service limits. AWS Trusted Advisor inspects your AWS environment and provides recommendations for improving performance, security, and reliability, reducing costs, and following best practices. AWS Trusted Advisor also alerts you when you are approaching or exceeding your service limits and helps you request limit increases.",
     multiSelect: false,
+    id: 81,
   },
-
   {
     question:
       "82. A company is running applications on Amazon EC2 instances in the same AWS account for several different projects. The company wants to track infrastructure costs for each of the projects separately. The company must perform this tracking with the least possible impact on existing infrastructure and at no additional cost.",
@@ -1196,8 +1270,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answer is D because cost allocation tags are a way to track infrastructure costs for each of the projects separately. Cost allocation tags are key-value pairs that can be attached to AWS resources, such as EC2 instances, and used to categorize and group them for billing purposes. The other options are incorrect because they do not meet the requirements of the question. Using a different Amazon EC2 instance type for each project does not help track the costs of each project and may impact the performance and compatibility of the applications. Publishing project-specific Amazon CloudWatch custom metrics for each application does not help track the costs of each project and may incur additional costs for using CloudWatch. Deploying EC2 instances for each project in a separate AWS account helps track the costs of each project but impacts the existing infrastructure and incurs additional costs for using multiple accounts.",
     multiSelect: false,
+    id: 82,
   },
-
   {
     question:
       "83. Which AWS service or feature captures information about inbound and outbound network traffic from an Amazon EC2 instance?",
@@ -1211,6 +1285,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answer is C because VPC Flow Logs are an AWS service or feature that capture information about inbound and outbound network traffic from an Amazon EC2 instance. VPC Flow Logs are a feature that enables customers to capture information about the IP traffic going to and from network interfaces in their VPCs. VPC Flow Logs can help customers monitor and troubleshoot connectivity issues, such as traffic that is not reaching an instance or traffic that is being rejected by a security group. The other options are incorrect because they are not AWS services or features that capture information about inbound and outbound network traffic from an Amazon EC2 instance. VPC Reachability Analyzer is an AWS service or feature that allows customers to perform connectivity testing between resources in their VPCs and identify configuration issues that prevent connectivity. Amazon Athena is an AWS service that allows customers to query data stored in Amazon S3 using standard SQL. AWS X-Ray is an AWS service that allows customers to analyze and debug distributed applications, such as those built using a microservices architecture.",
     multiSelect: false,
+    id: 83,
   },
   {
     question:
@@ -1229,8 +1304,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS Shared Responsibility Model outlines how AWS and the customer share responsibility for security and compliance of the AWS environment. AWS is responsible for the security of the cloud, which includes the physical security of AWS facilities, infrastructure, hardware, software, and networking that run AWS services. The customer is responsible for security in the cloud, which includes security group configuration, encryption of customer data on AWS, AWS Lambda infrastructure management, and network bandwidth management of each AWS Region.",
     multiSelect: true,
+    id: 84,
   },
-
   {
     question:
       "85. Which AWS service should a cloud professional use to receive real-time guidance for provisioning resources, based on AWS best practices related to security, cost optimization, and service limits?",
@@ -1244,8 +1319,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Trusted Advisor is the AWS service that provides real-time guidance for provisioning resources, based on AWS best practices related to security, cost optimization, and service limits. AWS Trusted Advisor inspects your AWS environment and provides recommendations for improving performance, security, and reliability, reducing costs, and following best practices. AWS Trusted Advisor also alerts you when you are approaching or exceeding your service limits and helps you request limit increases.",
     multiSelect: false,
+    id: 85,
   },
-
   {
     question:
       "86. A company is running applications on Amazon EC2 instances in the same AWS account for several different projects. The company wants to track infrastructure costs for each of the projects separately. The company must perform this tracking with the least possible impact on existing infrastructure and at no additional cost.",
@@ -1259,8 +1334,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answer is D because cost allocation tags are a way to track infrastructure costs for each of the projects separately. Cost allocation tags are key-value pairs that can be attached to AWS resources, such as EC2 instances, and used to categorize and group them for billing purposes. The other options are incorrect because they do not meet the requirements of the question. Using a different Amazon EC2 instance type for each project does not help track the costs of each project and may impact the performance and compatibility of the applications. Publishing project-specific Amazon CloudWatch custom metrics for each application does not help track the costs of each project and may incur additional costs for using CloudWatch. Deploying EC2 instances for each project in a separate AWS account helps track the costs of each project but impacts the existing infrastructure and incurs additional costs for using multiple accounts.",
     multiSelect: false,
+    id: 86,
   },
-
   {
     question:
       "87. Which AWS service or feature captures information about inbound and outbound network traffic from an Amazon EC2 instance?",
@@ -1274,8 +1349,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answer is C because VPC Flow Logs are an AWS service or feature that capture information about inbound and outbound network traffic from an Amazon EC2 instance. VPC Flow Logs are a feature that enables customers to capture information about the IP traffic going to and from network interfaces in their VPCs. VPC Flow Logs can help customers monitor and troubleshoot connectivity issues, such as traffic that is not reaching an instance or traffic that is being rejected by a security group. The other options are incorrect because they are not AWS services or features that capture information about inbound and outbound network traffic from an Amazon EC2 instance. VPC Reachability Analyzer is an AWS service or feature that allows customers to perform connectivity testing between resources in their VPCs and identify configuration issues that prevent connectivity. Amazon Athena is an AWS service that allows customers to query data stored in Amazon S3 using standard SQL. AWS X-Ray is an AWS service that allows customers to analyze and debug distributed applications, such as those built using a microservices architecture.",
     multiSelect: false,
+    id: 87,
   },
-
   {
     question:
       "88. A company is migrating an application that includes an Oracle database to AWS. The company cannot rewrite the application.",
@@ -1289,8 +1364,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Relational Database Service (Amazon RDS) is a service that provides managed relational database engines. Amazon RDS supports multiple database engines, including Oracle, MySQL, PostgreSQL, MariaDB, SQL Server, and Amazon Aurora. Amazon RDS can be used to migrate an application that includes an Oracle database to AWS without rewriting the application, as long as the application is compatible with the version and edition of Oracle supported by Amazon RDS. Amazon RDS can also provide benefits such as high availability, scalability, security, backup and restore, and performance optimization.",
     multiSelect: false,
+    id: 88,
   },
-
   {
     question:
       "89. Which AWS feature or resource is a deployable Amazon EC2 instance template that is pre-packaged with software and security requirements?",
@@ -1304,8 +1379,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "An Amazon Machine Image (AMI) is a deployable Amazon EC2 instance template that is pre-packaged with software and security requirements. It provides the information required to launch an instance, which is a virtual server in the cloud. You can use an AMI to launch as many instances as you need. You can also create your own custom AMIs or use shared AMIs from other AWS users.",
     multiSelect: false,
+    id: 89,
   },
-
   {
     question:
       "90. Which AWS service or tool can be used to consolidate a company's payments with multiple AWS accounts?",
@@ -1319,8 +1394,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Organizations is an account management service that enables you to consolidate multiple AWS accounts into an organization that you create and centrally manage. AWS Organizations includes consolidated billing and account management features that allow you to better meet the budgetary, security, and compliance needs of your business.",
     multiSelect: false,
+    id: 90,
   },
-
   {
     question:
       "91. Which AWS services and features are provided to all customers at no additional cost? (Select TWO.)",
@@ -1335,8 +1410,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS services and features that are provided to all customers at no additional cost are VPC and AWS Identity and Access Management (IAM). VPC is a service that enables you to launch AWS resources in a logically isolated virtual network that you define. You can create and use a VPC at no additional cost and only pay for the resources you launch inside the VPC, such as EC2 instances or EBS volumes. IAM is a service that enables you to manage access and permissions to AWS resources. You can create and use IAM users, groups, roles, and policies at no additional cost and only pay for the AWS resources that IAM entities access. Amazon Aurora, Amazon SageMaker, and Amazon Polly are not free services and charge based on usage and chosen resources.",
     multiSelect: true,
+    id: 91,
   },
-
   {
     question: "92. Which of the following describes an AWS Region?",
     options: [
@@ -1350,8 +1425,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "An AWS Region is a specific location within a geographical area that provides high availability. An AWS Region consists of two or more Availability Zones, which are isolated locations within the same Region. Each Availability Zone has independent power, cooling, and physical security, and is connected to the other Availability Zones in the same Region via a low-latency, high-throughput, and highly redundant network. AWS services are available in multiple Regions worldwide, enabling the user to choose where to run their applications and store their data.",
     multiSelect: false,
+    id: 92,
   },
-
   {
     question:
       "93. Which pillar of the AWS Well-Architected Framework includes a design principle about measuring the overall efficiency of workloads in terms of business value?",
@@ -1365,8 +1440,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The Operational Excellence pillar of the AWS Well-Architected Framework includes a design principle about measuring the overall efficiency of workloads in terms of business value. This principle states that you should monitor and measure key performance indicators (KPIs) and set goals and limits that align with your business objectives. You should also use feedback loops to continuously improve your processes and procedures.",
     multiSelect: false,
+    id: 93,
   },
-
   {
     question:
       "94. A company has been storing monthly reports in an Amazon S3 bucket. The company exports the report data to comma-separated value (.csv) files. A developer wants to write a simple query that can read all those files and generate a summary report.",
@@ -1380,8 +1455,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Athena is the AWS service that the developer should use to write a simple query that can read all the .csv files stored in an Amazon S3 bucket and generate a summary report. Amazon Athena is an interactive query service that enables users to analyze data in Amazon S3 using standard SQL. Amazon Athena requires no setup or management of servers, and users only pay for the queries they run. Amazon Athena can handle multiple data formats, including .csv, and can integrate with other AWS services, such as Amazon QuickSight, for data visualization.",
     multiSelect: false,
+    id: 94,
   },
-
   {
     question:
       "95. When designing AWS workloads to be operational even when there are component failures, what is an AWS recommended practice?",
@@ -1395,8 +1470,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Designing for automatic failover to healthy resources is an AWS recommended practice when designing AWS workloads to be operational even when there are component failures. This means that you should architect your system to handle the loss of one or more components without affecting the availability or performance of your application. You can use multiple AWS services and features to achieve this, such as Auto Scaling, Elastic Load Balancing, Amazon Route 53, AWS CloudFormation, and AWS CloudWatch.",
     multiSelect: false,
+    id: 95,
   },
-
   {
     question:
       "96. A company wants to protect its AWS Cloud information, systems, and assets while performing risk assessment and mitigation tasks.",
@@ -1410,6 +1485,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The pillar of the AWS Well-Architected Framework that is supported by the goals of protecting AWS Cloud information, systems, and assets while performing risk assessment and mitigation tasks is security. Security is the ability to protect information, systems, and assets while delivering business value through risk assessments and mitigation strategies. The security pillar covers topics such as identity and access management, data protection, infrastructure protection, detection controls, incident response, and compliance.",
     multiSelect: false,
+    id: 96,
   },
   {
     question:
@@ -1425,8 +1501,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answers are A and B because the Service Quotas console and AWS Trusted Advisor are AWS services or tools that can report the quotas so the company can improve the reliability of the application. The Service Quotas console is an AWS tool that allows users to view and manage their quotas for AWS services from a central location. Users can use the Service Quotas console to request quota increases, track quota usage, and set alarms for nearing quota limits. AWS Trusted Advisor is an AWS service that provides real-time guidance to help users follow AWS best practices for security, performance, cost optimization, and fault tolerance. One of the categories of checks that AWS Trusted Advisor performs are the service limits checks, which monitor the usage of each AWS service and alert users when they are close to reaching the default limit. The other options are incorrect because they are not AWS services or tools that can report the quotas so the company can improve the reliability of the application. AWS Systems Manager is an AWS service that enables users to automate operational tasks, manage configuration and compliance, and monitor system health and performance. AWS Shield is an AWS service that protects users against Distributed Denial of Service (DDoS) attacks. AWS Cost Explorer is an AWS tool that allows users to visualize, understand, and manage their AWS costs and usage.",
     multiSelect: true,
+    id: 97,
   },
-
   {
     question:
       "98. Which AWS service is a key-value database that delivers single-digit millisecond latency at any scale?",
@@ -1440,8 +1516,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answer is A because Amazon DynamoDB is a key-value database that delivers single-digit millisecond latency at any scale. Amazon DynamoDB is a fully managed, serverless, and scalable NoSQL database service that supports both key-value and document data models. The other options are incorrect because they are not key-value databases. Amazon Aurora is a relational database that is compatible with MySQL and PostgreSQL. Amazon DocumentDB (with MongoDB compatibility) is a document database that is compatible with MongoDB. Amazon Neptune is a graph database that supports property graph and RDF graph models.",
     multiSelect: false,
+    id: 98,
   },
-
   {
     question:
       "99. Which AWS Cloud feature enables users to have the ability to pay based on current needs, rather than projected needs?",
@@ -1455,8 +1531,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Pay-as-you-go pricing is the AWS Cloud feature that enables users to have the ability to pay based on current needs, rather than projected needs. Pay-as-you-go means that users only pay for the AWS services and resources they use, without any upfront commitments or long-term contracts. This allows users to scale up or down based on their changing business requirements and avoid paying for idle or unused capacity. Pay-as-you-go also allows users to benefit from AWS's economies of scale and lower costs as they grow their businesses.",
     multiSelect: false,
+    id: 99,
   },
-
   {
     question:
       "100. Which AWS service or tool helps centrally manage billing and enable controlled access to resources across AWS accounts?",
@@ -1470,8 +1546,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Organizations helps centrally manage billing and enable controlled access to resources across AWS accounts. AWS Organizations is a service that enables you to consolidate multiple AWS accounts into an organization that you create and centrally manage. AWS Organizations allows you to create groups of accounts and apply policies to them, such as service control policies (SCPs) that specify the services and actions that users and roles can access across accounts. AWS Organizations also allows you to use consolidated billing, which combines the usage and charges across all accounts in your organization into a single bill.",
     multiSelect: false,
+    id: 100,
   },
-
   {
     question:
       "101. Which of the following are components of an AWS Site-to-Site VPN connection? (Select TWO.)",
@@ -1486,6 +1562,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answers are B and D because a virtual private gateway and a customer gateway are components of an AWS Site-to-Site VPN connection. A virtual private gateway is the AWS side of the VPN connection that connects to the customer's VPC. A customer gateway is the customer side of the VPN connection that resides on the customer's network. The other options are incorrect because they are not components of an AWS Site-to-Site VPN connection. AWS Storage Gateway is a service that connects on-premises software applications with cloud-based storage. NAT gateway is a service that allows instances in a private subnet to connect to the Internet or other AWS services, but prevents the Internet from initiating a connection with those instances. Internet Gateway is a service that allows communication between instances in a VPC and the Internet.",
     multiSelect: true,
+    id: 101,
   },
   {
     question:
@@ -1500,8 +1577,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Managing guest operating systems is a customer responsibility, according to the AWS Shared Responsibility Model. The AWS Shared Responsibility Model defines the different security and compliance responsibilities of AWS and the customer. AWS is responsible for the security of the cloud, which includes the physical infrastructure, hardware, software, and facilities that run the AWS Cloud. The customer is responsible for security in the cloud, which includes configuring and managing guest operating systems, applications, data, and network traffic protection.",
     multiSelect: false,
+    id: 102,
   },
-
   {
     question:
       "103. A company needs to migrate all its development teams to a cloud-based integrated development environment (IDE).",
@@ -1515,8 +1592,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answer is B because AWS Cloud9 is an AWS service that enables users to run their existing custom and non-production workloads on the AWS Cloud quickly and cost-effectively. AWS Cloud9 is a cloud-based integrated development environment (IDE) that lets users write, run, and debug code from a web browser. AWS Cloud9 supports multiple programming languages, such as Python, Java, Node.js, and more. AWS Cloud9 also provides users with a terminal that can access AWS services and resources, such as Amazon EC2 instances, AWS Lambda functions, and AWS CloudFormation stacks. The other options are incorrect because they are not AWS services that enable users to run their existing custom and non-production workloads on the AWS Cloud quickly and cost-effectively. AWS CodeBuild is an AWS service that enables users to compile, test, and package their code for deployment. AWS OpsWorks is an AWS service that enables users to configure and manage their applications using Chef or Puppet. AWS Cloud Development Kit (AWS CDK) is an AWS service that enables users to define and provision their cloud infrastructure using familiar programming languages, such as TypeScript, Python, Java, and C#.",
     multiSelect: false,
+    id: 103,
   },
-
   {
     question:
       "104. Which of the following is a recommended design principle of the AWS Well-Architected Framework?",
@@ -1530,8 +1607,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answer is C because learning to improve from operational failures is a recommended design principle of the AWS Well-Architected Framework. The AWS Well-Architected Framework is a set of best practices and guidelines for designing and operating reliable, secure, efficient, and cost-effective systems in the cloud. The AWS Well-Architected Framework consists of five pillars: operational excellence, security, reliability, performance efficiency, and cost optimization. Each pillar has a set of design principles that describe the characteristics of a well-architected system. Learning to improve from operational failures is a design principle of the operational excellence pillar, which focuses on running and monitoring systems to deliver business value and continually improving processes and procedures. The other options are incorrect because they are not recommended design principles of the AWS Well-Architected Framework. Reducing downtime by making changes to infrastructure infrequently and in large increments is not a design principle of the AWS Well-Architected Framework, but rather a source of risk and inefficiency. A well-architected system should implement changes frequently and in small increments to minimize the impact and scope of failures. Spending time to configure infrastructure manually is not a design principle of the AWS Well-Architected Framework, but rather a source of human error and inconsistency. A well-architected system should automate manual tasks to improve the speed and accuracy of operations. Using monolithic application design for centralization is not a design principle of the AWS Well-Architected Framework, but rather a source of complexity and rigidity. A well-architected system should use loosely coupled and distributed components to enable scalability and resilience.",
     multiSelect: false,
+    id: 104,
   },
-
   {
     question: "105. Which AWS database service provides in-memory data store?",
     options: [
@@ -1544,6 +1621,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The correct answer is B because Amazon ElastiCache is a service that provides in-memory data store.",
     multiSelect: false,
+    id: 105,
   },
   {
     question:
@@ -1558,6 +1636,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Secrets Manager should be used to store database credentials with the highest security. It securely stores, encrypts, rotates, and retrieves secrets such as credentials, passwords, and API keys.",
     multiSelect: false,
+    id: 106,
   },
   {
     question:
@@ -1572,8 +1651,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Artifact provides on-demand access to AWS security and compliance documentation, such as audit reports, security certifications, and agreements, allowing customers to download, review, and accept the relevant documents for their use of AWS services.",
     multiSelect: false,
+    id: 107,
   },
-
   {
     question:
       "108. A company wants to centrally manage security policies and billing services in a multi-account AWS environment. Which AWS service should the company use to meet these requirements?",
@@ -1587,8 +1666,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Organizations helps you centrally govern your environment as you grow and scale your AWS resources. You can create groups of accounts and apply policies to them, as well as consolidate billing from multiple accounts.",
     multiSelect: false,
+    id: 108,
   },
-
   {
     question:
       "109. A company is hosting a web application in a Docker container on Amazon EC2. AWS is responsible for which of the following tasks?",
@@ -1603,8 +1682,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "It is part of the shared responsibility model, where AWS is responsible for the security of the cloud and the customer is responsible for security in the cloud. AWS is also responsible for the global infrastructure that runs all the services offered in the AWS Cloud.",
     multiSelect: false,
+    id: 109,
   },
-
   {
     question:
       "110. When a user wants to use their own per-socket, per-core, or per-VM software licenses for a Microsoft Windows Server running on AWS, which Amazon EC2 instance type is required?",
@@ -1618,8 +1697,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Dedicated Hosts are Amazon EC2 instances required when a user wants to use their own per-socket, per-core, or per-VM software licenses for a Microsoft Windows Server running on AWS. They are physical servers dedicated to a single customer and allow customers to use their existing server-bound software licenses.",
     multiSelect: false,
+    id: 110,
   },
-
   {
     question:
       "111. Which AWS service or feature provides protection against HTTP attacks for users running public-facing web applications?",
@@ -1633,8 +1712,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS WAF is a web application firewall that helps users protect their web applications from common exploits, such as SQL injection, cross-site scripting, and bot attacks. Users can create custom rules to define the web traffic they want to allow, block, or count.",
     multiSelect: false,
+    id: 111,
   },
-
   {
     question:
       "112. A company wants to deploy and manage a Docker-based application on AWS.",
@@ -1648,8 +1727,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon ECS is a fully managed container orchestration service that makes it easy to run, scale, and secure Docker container applications on AWS. It eliminates the need to install, operate, and scale your own cluster management infrastructure.",
     multiSelect: false,
+    id: 112,
   },
-
   {
     question:
       "113. A cloud engineer needs to download AWS security and compliance documents for a future audit.",
@@ -1663,8 +1742,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Artifact is a self-service portal that allows users to access and download AWS compliance reports and agreements. These documents provide evidence of AWS compliance with global, regional, and industry-specific security standards and regulations.",
     multiSelect: false,
+    id: 113,
   },
-
   {
     question:
       "114. A company's application stores data in an Amazon S3 bucket. The company has an AWS Lambda function that processes data in the S3 bucket. The company needs to invoke the function once per day at a specific time.",
@@ -1678,8 +1757,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon EventBridge allows you to create scheduled rules that trigger your targets at a specific time or interval, such as once per day. AMS provides operational management, AWS CodeStar manages software development projects, and AWS Step Functions coordinates serverless workflows.",
     multiSelect: false,
+    id: 114,
   },
-
   {
     question:
       "115. A company wants to establish a security layer in their VPC that will act as a firewall to control subnet traffic.",
@@ -1693,8 +1772,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Security groups are stateful firewalls that control inbound and outbound traffic at the instance level. You can associate them with each instance in a VPC and specify rules to allow or deny traffic. Routing tables direct traffic, network ACLs are stateless firewalls at the subnet level, and Amazon GuardDuty is a threat detection service.",
     multiSelect: false,
+    id: 115,
   },
-
   {
     question:
       "116. A company is migrating an on-premises relational database server to the AWS cloud and wants to minimize the administrative overhead of database maintenance tasks.",
@@ -1708,8 +1787,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon RDS is a fully managed relational database service that handles routine database tasks such as provisioning, patching, backup, recovery, failure detection, and repair. It supports multiple database engines, including MySQL, PostgreSQL, Oracle, SQL Server, and Amazon Aurora.",
     multiSelect: false,
+    id: 116,
   },
-
   {
     question:
       "117. A cloud professional is analyzing the performance and usage of Amazon EC2 instances to deliver recommendations for potential cost savings.",
@@ -1723,8 +1802,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Right Sizing is the process of optimizing the performance and cost of your AWS resources by selecting the most appropriate instance type, size, and configuration based on the workload requirements and usage patterns. This can help reduce the over-provisioning or under-utilization of resources.",
     multiSelect: false,
+    id: 117,
   },
-
   {
     question:
       "118. A company recently migrated to the AWS cloud and needs to determine if its newly imported Amazon EC2 instances are properly sized and typed.",
@@ -1739,8 +1818,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Trusted Advisor provides best practice recommendations and can help identify underutilized or idle EC2 instances, suggesting ways to reduce costs and improve performance. AWS Compute Optimizer analyzes the configuration and utilization metrics of EC2 instances and delivers recommendations for optimal instance types, sizes, and configurations.",
     multiSelect: true,
+    id: 118,
   },
-
   {
     question:
       "119. Which AWS support plan assigns an AWS concierge agent to a company's account?",
@@ -1754,8 +1833,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Enterprise Support is the highest tier of support offered by AWS and provides the most comprehensive and personalized assistance. An AWS concierge agent is a dedicated technical account manager who acts as a single point of contact for the company, helping optimize the AWS environment, resolve issues, and access AWS experts.",
     multiSelect: false,
+    id: 119,
   },
-
   {
     question:
       "120. What is an advantage of AWS cloud computing that minimizes variable costs?",
@@ -1769,8 +1848,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS can achieve lower variable costs per unit of compute by distributing the fixed costs of building and maintaining data centers across a large number of customers. As a result, AWS can offer lower and more predictable prices to its customers, who only pay for the resources they consume.",
     multiSelect: false,
+    id: 120,
   },
-
   {
     question:
       "121. Which of the following is an AWS value proposition that describes a user's ability to scale infrastructure based on demand?",
@@ -1784,8 +1863,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Elasticity of resources means that the user can quickly and easily provision or deprovision resources, without any upfront commitment or long-term contract. This can help optimize the cost and performance of the application and respond to changing business needs and customer expectations.",
     multiSelect: false,
+    id: 121,
   },
-
   {
     question:
       "122. Which of the following is available to a company that has an AWS Business Support plan?",
@@ -1799,8 +1878,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS Health API provides programmatic access to AWS Health information that is presented in the AWS Personal Health Dashboard. It can help users get timely and personalized information about events that can affect the availability and performance of their AWS resources.",
     multiSelect: false,
+    id: 122,
   },
-
   {
     question:
       "123. A company has an application with robust hardware requirements. The application must be accessed by students who are using lightweight, low-cost laptops.",
@@ -1814,6 +1893,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon AppStream 2.0 is a fully managed, secure application streaming service that allows customers to stream desktop applications from AWS to any device with a web browser. It handles provisioning, scaling, patching, and maintenance of the backend infrastructure, delivering high performance and responsive user experience.",
     multiSelect: false,
+    id: 123,
   },
   {
     question: "124. What is an Availability Zone?",
@@ -1828,8 +1908,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Availability Zones are physically separate locations within an AWS Region that are engineered to be isolated from failures and connected by low-latency, high-throughput, and highly redundant networking. Each Availability Zone contains one or more data centers that house the servers and storage devices that run AWS services.",
     multiSelect: false,
+    id: 124,
   },
-
   {
     question:
       "125. Which of the following are design principles for reliability in the AWS cloud? (Select TWO)",
@@ -1847,6 +1927,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "By using automation, systems can detect and remediate failures without human intervention, reducing the impact and duration of failures and improving system availability. Regularly testing recovery procedures using simulated scenarios can help identify gaps and improve the recovery process.",
     multiSelect: true,
+    id: 125,
   },
   {
     question:
@@ -1861,6 +1942,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS is responsible for decommissioning underlying storage devices that reach the end of their useful life, using methods detailed in DoD 5220.22-M or NIST 800-88.",
     multiSelect: false,
+    id: 126,
   },
   {
     question:
@@ -1875,6 +1957,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Customers are responsible for updating and patching the guest operating system on Amazon EC2 instances.",
     multiSelect: false,
+    id: 127,
   },
   {
     question:
@@ -1889,6 +1972,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Operations is a foundational capability in the AWS Cloud Adoption Framework, focusing on support and maintenance processes.",
     multiSelect: false,
+    id: 128,
   },
   {
     question:
@@ -1903,6 +1987,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Using AWS CloudTrail aligns with the design principle of ensuring traceability by logging API calls and events.",
     multiSelect: false,
+    id: 129,
   },
   {
     question:
@@ -1917,6 +2002,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon CloudFront is a global CDN service for secure and fast delivery of content.",
     multiSelect: false,
+    id: 130,
   },
   {
     question:
@@ -1931,6 +2017,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Reserved Instances offer significant discounts and are suitable for stable, long-term workloads.",
     multiSelect: false,
+    id: 131,
   },
   {
     question:
@@ -1945,6 +2032,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS Billing Console provides reports on the estimated environmental impact of AWS usage.",
     multiSelect: false,
+    id: 132,
   },
   {
     question:
@@ -1960,6 +2048,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Operations and Performance Efficiency are foundational capabilities in the AWS Cloud Adoption Framework.",
     multiSelect: true,
+    id: 133,
   },
   {
     question:
@@ -1974,6 +2063,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Compute Savings Plans offer up to 66% off and are suitable for long-term compute cost optimization.",
     multiSelect: false,
+    id: 134,
   },
   {
     question:
@@ -1988,6 +2078,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon ElastiCache offers scalable in-memory data store solutions, compatible with open-source engines.",
     multiSelect: false,
+    id: 135,
   },
   {
     question:
@@ -2002,6 +2093,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Artifact provides on-demand access to AWS security and compliance reports and agreements.",
     multiSelect: false,
+    id: 136,
   },
   {
     question:
@@ -2016,6 +2108,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Enterprise Support offers concierge service, a designated TAM, and 24/7 technical support.",
     multiSelect: false,
+    id: 137,
   },
   {
     question:
@@ -2030,6 +2123,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon CloudFront with Amazon S3 provides a secure and fast way to globally deliver static files.",
     multiSelect: false,
+    id: 138,
   },
   {
     question:
@@ -2044,6 +2138,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Create annotated documentation supports operational excellence by improving understanding and management of workloads.",
     multiSelect: false,
+    id: 139,
   },
   {
     question:
@@ -2058,6 +2153,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon RDS supports multiple database engines, including Microsoft SQL Server, reducing management overhead.",
     multiSelect: false,
+    id: 140,
   },
   {
     question:
@@ -2072,6 +2168,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "'Security of the cloud' refers to AWS's responsibility in protecting the infrastructure that runs AWS services.",
     multiSelect: false,
+    id: 141,
   },
   {
     question:
@@ -2086,6 +2183,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon RDS is suitable for applications that require managed relational database services.",
     multiSelect: false,
+    id: 142,
   },
   {
     question:
@@ -2100,6 +2198,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The AWS Customer Carbon Footprint Tool provides insights into the environmental impact of AWS usage.",
     multiSelect: false,
+    id: 143,
   },
   {
     question:
@@ -2114,6 +2213,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Outposts allows deploying AWS services closer to on-premises facilities, reducing latency.",
     multiSelect: false,
+    id: 144,
   },
   {
     question:
@@ -2132,6 +2232,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Scaling infrastructure with user load and eliminating unused assets help reduce waste and improve sustainability.",
     multiSelect: true,
+    id: 145,
   },
   {
     question:
@@ -2150,6 +2251,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS is responsible for securing physical access to facilities and maintaining infrastructure in the Shared Responsibility Model.",
     multiSelect: true,
+    id: 146,
   },
   {
     question:
@@ -2165,6 +2267,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Trusted Advisor is a service that provides real-time guidance to help you provision your resources following AWS best practices. Trusted Advisor provides recommended actions in five categories: cost optimization, performance, security, fault tolerance, and service quotas.",
     multiSelect: true,
+    id: 147,
   },
   {
     question: "148. Which AWS service is always free for users?",
@@ -2178,6 +2281,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Identity and Access Management (IAM) is a service that enables users to manage access to AWS services and resources. IAM is always free for users.",
     multiSelect: false,
+    id: 148,
   },
   {
     question:
@@ -2193,8 +2297,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon CloudFront is a content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency and high transfer speeds.",
     multiSelect: false,
+    id: 149,
   },
-
   {
     question:
       "150. Which AWS services or tools are designed to protect a workload from SQL injection, cross-site scripting, and DDoS attacks? (Select TWO.)",
@@ -2208,6 +2312,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Shield Standard and AWS WAF are services designed to protect workloads against SQL injection, cross-site scripting, and DDoS attacks.",
     multiSelect: true,
+    id: 150,
   },
   {
     question:
@@ -2222,6 +2327,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability.",
     multiSelect: false,
+    id: 151,
   },
   {
     question:
@@ -2236,6 +2342,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Using multiple Availability Zones is the best way to increase the resiliency of the application, maintaining high availability even in the case of failures.",
     multiSelect: false,
+    id: 152,
   },
   {
     question:
@@ -2250,6 +2357,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS CloudFormation allows you to model and provision AWS and third-party resources in a predictable and repeatable manner, ideal for maintaining multiple environments.",
     multiSelect: false,
+    id: 153,
   },
   {
     question:
@@ -2268,6 +2376,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Selecting EC2 instance types based on past utilization and using S3 lifecycle policies to reduce costs are cost optimization strategies.",
     multiSelect: true,
+    id: 154,
   },
   {
     question:
@@ -2282,6 +2391,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "In case of suspected illegal activities, the company should notify the AWS Abuse Team.",
     multiSelect: false,
+    id: 155,
   },
   {
     question:
@@ -2296,6 +2406,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Textract is capable of extracting text and data from scanned documents, ideal for reading values on invoices.",
     multiSelect: false,
+    id: 156,
   },
   {
     question:
@@ -2310,6 +2421,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Economies of scale allow AWS to offer lower costs as a result of the aggregate usage of all AWS users.",
     multiSelect: false,
+    id: 157,
   },
   {
     question:
@@ -2325,6 +2437,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The ideal solution involves using Amazon EFS, which is a storage system that can be accessed simultaneously by multiple EC2 instances from different Availability Zones, ensuring that all users see all their documents regardless of the instance they are routed to by the Application Load Balancer.",
     multiSelect: false,
+    id: 158,
   },
   {
     question:
@@ -2341,6 +2454,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Adding a department tag to each resource and configuring cost allocation tags is an action that can help you achieve the goal of billing each department for their resource usage with the least operational overhead.",
     multiSelect: false,
+    id: 159,
   },
   {
     question:
@@ -2356,6 +2470,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS CodeCommit and AWS CodeDeploy are correct because AWS CodeCommit is a service that provides a fully managed source control service that hosts secure Git repositories, and AWS CodeDeploy is a service that automates code deployments to any instance, including Amazon EC2 instances and on-premises servers.",
     multiSelect: true,
+    id: 160,
   },
   {
     question:
@@ -2370,6 +2485,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Spot Instances allow you to take advantage of unused EC2 capacity in the AWS cloud available at up to a 90% discount compared to On-Demand prices.",
     multiSelect: false,
+    id: 161,
   },
   {
     question:
@@ -2384,6 +2500,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Outposts is a service that offers fully managed and configurable compute and storage racks, allowing you to run workloads on-premises and connect to AWS services in the cloud.",
     multiSelect: false,
+    id: 162,
   },
   {
     question:
@@ -2398,6 +2515,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Step Functions is a service that allows you to coordinate multiple AWS services into serverless workflows that can be triggered by events.",
     multiSelect: false,
+    id: 163,
   },
   {
     question:
@@ -2412,6 +2530,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Regions are geographic areas around the world where AWS has clusters of data centers. By hosting the customer's data in a specific AWS Region, the company can meet the requirement of hosting the data in the customer's country.",
     multiSelect: false,
+    id: 164,
   },
   {
     question:
@@ -2426,6 +2545,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Reserved Instances with Partial Upfront payment are the most cost-effective option for predictable workloads that require continuous operation.",
     multiSelect: false,
+    id: 165,
   },
   {
     question:
@@ -2440,6 +2560,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "In the AWS Shared Responsibility Model, customers are responsible for security 'in the cloud', which includes access control and data management.",
     multiSelect: false,
+    id: 166,
   },
   {
     question:
@@ -2455,6 +2576,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "To make a subnet public, the company needs to use an Amazon VPC internet gateway and configure appropriate route tables.",
     multiSelect: true,
+    id: 167,
   },
   {
     question:
@@ -2469,6 +2591,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Cost Explorer is a tool that allows users to analyze and forecast AWS spending, helping to plan future budgets.",
     multiSelect: false,
+    id: 168,
   },
   {
     question:
@@ -2483,6 +2606,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "In the AWS Shared Responsibility Model, identity and access management is a customer responsibility.",
     multiSelect: false,
+    id: 169,
   },
   {
     question:
@@ -2501,6 +2625,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "These are two of the seven capabilities that are in the platform perspective of the AWS Cloud Adoption Framework (AWS CAF). The platform perspective helps you build a scalable and enterprise-grade hybrid cloud platform, modernize existing workloads, and implement new cloud-native solutions.",
     multiSelect: true,
+    id: 170,
   },
   {
     question:
@@ -2515,6 +2640,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon S3 is an AWS service that provides scalable, durable, and cost-effective object storage in the cloud. Amazon S3 can store any amount and type of data, such as server logs, and offers multiple storage classes with different performance and price characteristics.",
     multiSelect: false,
+    id: 171,
   },
   {
     question:
@@ -2529,6 +2655,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "An IAM credential report is a feature of AWS Identity and Access Management (IAM) that allows you to view and download a report that lists all the IAM users in your account and the status of their various credentials, such as passwords, access keys, and MFA devices.",
     multiSelect: false,
+    id: 172,
   },
   {
     question:
@@ -2543,6 +2670,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Migration Hub is a service that provides a single place to track the progress of application migrations across multiple AWS and partner solutions. It allows you to choose the AWS and partner migration tools that best fit your needs, while providing visibility into the status of migrations across your application portfolio.",
     multiSelect: false,
+    id: 173,
   },
   {
     question:
@@ -2557,6 +2685,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up, operate, and scale a relational database in the cloud. It provides cost-efficient and resizable capacity while automating time-consuming administration tasks such as hardware provisioning, database setup, patching, and backups. Amazon RDS supports six popular database engines: Amazon Aurora, PostgreSQL, MySQL, MariaDB, Oracle Database, and SQL Server.",
     multiSelect: false,
+    id: 174,
   },
   {
     question:
@@ -2571,6 +2700,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Cognito is a service that provides user identity and authentication for mobile and web applications, allowing users to sign up, sign in, and access AWS resources with different identity providers.",
     multiSelect: false,
+    id: 175,
   },
   {
     question:
@@ -2585,6 +2715,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Inspector is an automated vulnerability management service that continuously scans AWS workloads for software vulnerabilities and unintended network exposure. Amazon Inspector automatically discovers workloads such as Amazon EC2 instances, containers, and Lambda functions, and scans them for software vulnerabilities and unintended network exposure.",
     multiSelect: false,
+    id: 176,
   },
   {
     question:
@@ -2604,6 +2735,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "According to the AWS Shared Responsibility Model, the customer is responsible for security in the cloud, which includes the tasks of configuring the AWS-provided security group firewall and classifying the company's assets on the AWS cloud.",
     multiSelect: true,
+    id: 177,
   },
   {
     question:
@@ -2613,6 +2745,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The Operations perspective helps you monitor and manage your cloud workloads to ensure that they are delivered at a level that meets your business needs. Common stakeholders include the chief operating officer (COO), cloud director, cloud operations manager, and cloud operations engineers.",
     multiSelect: false,
+    id: 178,
   },
   {
     question:
@@ -2627,6 +2760,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Personalize is a fully managed service that allows developers to create customized recommendations for customers using their own data. Amazon Personalize can process and examine data, identify what is meaningful, select the right algorithms, and train and optimize a personalized recommendation model automatically.",
     multiSelect: false,
+    id: 179,
   },
   {
     question:
@@ -2641,6 +2775,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "An Internet gateway is a service that allows Internet traffic to come into a VPC. Otherwise, a VPC is completely segmented and the only way to access it is potentially through a VPN connection rather than an Internet connection. An Internet gateway is a logical connection between an AWS VPC and the Internet. It supports IPv4 and IPv6 traffic and does not cause availability risks or bandwidth constraints on network traffic.",
     multiSelect: false,
+    id: 180,
   },
   {
     question:
@@ -2655,6 +2790,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Neptune is a service that provides a fully managed graph database that supports both property graphs and RDF graphs. It can be used to build applications that work with highly connected datasets, such as purchase recommendations, social networks, fraud detection, and knowledge graphs.",
     multiSelect: false,
+    id: 181,
   },
   {
     question:
@@ -2669,6 +2805,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "IAM roles are a way to grant temporary permissions to entities that need to access AWS resources, such as users, applications, or services. IAM roles allow customers to assign permissions to entities without having to create or manage IAM users or credentials for them.",
     multiSelect: false,
+    id: 182,
   },
   {
     question:
@@ -2683,6 +2820,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The approach that will achieve the goal of designing a reliable web application hosted on Amazon EC2 is to spread the EC2 instances across more than one Availability Zone. An Availability Zone is a physically isolated location within an AWS Region that has its own power, cooling, and network connectivity. By spreading EC2 instances across multiple Availability Zones, users can increase the fault tolerance and availability of their web applications, while reducing latency for end-users.",
     multiSelect: false,
+    id: 183,
   },
   {
     question:
@@ -2697,6 +2835,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "According to the AWS Shared Responsibility Model, AWS is responsible for the security of the cloud, while customers are responsible for security in the cloud. This means that AWS is responsible for the physical servers, network, and operating system that run the Lambda functions, while customers are responsible for the security of their code and AWS IAM for the Lambda service and within their function.",
     multiSelect: false,
+    id: 184,
   },
   {
     question:
@@ -2711,6 +2850,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS CloudFormation is a service that allows you to model and provision your AWS resources using templates. You can define your infrastructure as code and automate the creation and updating of your resources. AWS CloudFormation also supports nested stacks, change sets, and rollback features to help you manage complex and dynamic environments.",
     multiSelect: false,
+    id: 185,
   },
   {
     question:
@@ -2725,6 +2865,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Elastic Beanstalk is a service that allows you to deploy and manage applications on AWS without creating and configuring the necessary resources manually, such as EC2 instances, load balancers, security groups, databases, and more. AWS Elastic Beanstalk automatically handles the provisioning, scaling, load balancing, health monitoring, and updating of your application while giving you full control over the underlying AWS resources if needed.",
     multiSelect: false,
+    id: 186,
   },
   {
     question:
@@ -2743,6 +2884,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Simple Queue Service (Amazon SQS) and AWS Step Functions are AWS services that can be used to achieve a loosely coupled architecture. Amazon SQS is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. AWS Step Functions allows you to coordinate multiple AWS services into serverless workflows so you can build and update apps quickly.",
     multiSelect: true,
+    id: 187,
   },
   {
     question:
@@ -2757,6 +2899,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "A security group is a virtual firewall that can be associated with an Amazon EC2 instance to control incoming and outgoing traffic to and from the instance. You can specify which protocols, ports, and source or destination IP ranges are allowed or denied by the security group.",
     multiSelect: false,
+    id: 188,
   },
   {
     question:
@@ -2771,6 +2914,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Athena is a serverless interactive query service that allows users to run SQL queries on data stored in Amazon S3. It is ideal for ad-hoc queries on large datasets, as it does not require provisioning, configuring, or managing servers. Users only pay for the queries they run, based on the amount of data scanned.",
     multiSelect: false,
+    id: 189,
   },
   {
     question:
@@ -2786,6 +2930,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon RDS and Amazon Aurora are AWS managed services that support the PostgreSQL database engine. Amazon RDS makes it easy to set up, operate, and scale PostgreSQL deployments in the cloud, while Amazon Aurora is a cloud-native database engine compatible with PostgreSQL and offers higher performance and availability.",
     multiSelect: true,
+    id: 190,
   },
   {
     question:
@@ -2800,6 +2945,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon EC2 Auto Scaling is an AWS service that can help users reduce the number of running Amazon EC2 instances when application usage is low. Amazon EC2 Auto Scaling allows users to create scaling policies that automatically adjust the number of EC2 instances based on demand or on a schedule.",
     multiSelect: false,
+    id: 191,
   },
   {
     question:
@@ -2814,6 +2960,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "The company is following the best practice of implementing loosely coupled dependencies by migrating the application to AWS and breaking it into microservices. Loosely coupled dependencies are a design principle of the AWS Well-Architected Framework that helps reduce interdependencies between components and improve system scalability, reliability, and performance.",
     multiSelect: false,
+    id: 192,
   },
   {
     question:
@@ -2828,8 +2975,8 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Server-side encryption is an encryption option that Amazon S3 provides to encrypt data at rest in Amazon S3. With server-side encryption, Amazon S3 encrypts an object before saving it to disk in its data centers and decrypts it when you download the objects.",
     multiSelect: false,
+    id: 193,
   },
-
   {
     question:
       "195. An IT engineer needs to access AWS services from an on-premises application. What credentials or keys does the application need for authentication?",
@@ -2843,6 +2990,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "IAM access keys are long-term credentials that consist of an access key ID and a secret access key. You use access keys to sign programmatic requests that you make to AWS. If you need to access AWS services from an on-premises application, you can use IAM access keys to authenticate your requests.",
     multiSelect: false,
+    id: 194,
   },
   {
     question:
@@ -2857,6 +3005,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Using EC2 instances in multiple Availability Zones is an AWS infrastructure solution that meets the requirements of migrating a high-performance computing (HPC) application to AWS with fault tolerance and failover capabilities, and with the least latency between components.",
     multiSelect: false,
+    id: 195,
   },
   {
     question:
@@ -2875,6 +3024,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Elasticity in the AWS cloud refers to the ability to acquire resources as you need them and release resources when you no longer need them. In the cloud, you want to do this automatically. This means that you can scale resources as demand changes and can easily obtain resources when they are needed.",
     multiSelect: true,
+    id: 196,
   },
   {
     question:
@@ -2890,6 +3040,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "VPC peering and AWS Transit Gateway are two AWS services or features that allow users to create a network connection between two VPCs.",
     multiSelect: true,
+    id: 197,
   },
   {
     question:
@@ -2904,6 +3055,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Storage Gateway is a hybrid cloud storage service that provides on-premises access to virtually unlimited cloud storage. You can use AWS Storage Gateway to simplify storage management and reduce costs for hybrid cloud storage use cases. One of these use cases is tape-based backup, which allows you to store data backups on virtual tapes in the AWS cloud.",
     multiSelect: false,
+    id: 198,
   },
   {
     question:
@@ -2918,6 +3070,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Key Management Service (AWS KMS) is a managed service that makes it easy for you to create and control the encryption keys used to encrypt your data. AWS KMS provides centralized control over the encryption keys used to protect your data. You can use AWS KMS to encrypt data in Amazon RDS and Amazon EBS volumes.",
     multiSelect: false,
+    id: 199,
   },
   {
     question:
@@ -2932,6 +3085,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS GuardDuty continuously monitors and analyzes data for potential malicious activities, helping detect and respond to security threats in your AWS environment.",
     multiSelect: false,
+    id: 200,
   },
   {
     question:
@@ -2946,6 +3100,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Systems Manager provides tools to automatically apply patches to EC2 instances, ensuring they remain compliant with security policies.",
     multiSelect: false,
+    id: 201,
   },
   {
     question:
@@ -2960,6 +3115,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Lambda lets you run code without managing servers and charges only for the compute time you use, making it cost-effective for running small-scale tasks.",
     multiSelect: false,
+    id: 202,
   },
   {
     question:
@@ -2974,6 +3130,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon S3 provides highly durable and scalable object storage for storing large volumes of unstructured data.",
     multiSelect: false,
+    id: 203,
   },
   {
     question:
@@ -2988,6 +3145,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS CloudFormation allows users to define infrastructure as code using templates and automate the deployment of AWS resources.",
     multiSelect: false,
+    id: 204,
   },
   {
     question:
@@ -3002,6 +3160,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Elastic Load Balancer distributes incoming application traffic across multiple targets to ensure high availability and fault tolerance.",
     multiSelect: false,
+    id: 205,
   },
   {
     question:
@@ -3016,6 +3175,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon EMR allows you to run big data analytics using the Hadoop framework and process large datasets efficiently.",
     multiSelect: false,
+    id: 206,
   },
   {
     question:
@@ -3030,6 +3190,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Identity and Access Management (IAM) enables you to enforce security policies like multi-factor authentication (MFA) for better security in your AWS environment.",
     multiSelect: false,
+    id: 207,
   },
   {
     question:
@@ -3044,6 +3205,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon DynamoDB is a fully managed NoSQL database service that offers fast and predictable performance with seamless scalability.",
     multiSelect: false,
+    id: 208,
   },
   {
     question:
@@ -3058,6 +3220,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Direct Connect establishes a dedicated network connection between your on-premises data center and AWS, providing a more consistent and reliable connection.",
     multiSelect: false,
+    id: 209,
   },
   {
     question:
@@ -3072,6 +3235,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon SQS (Simple Queue Service) allows you to decouple application components by using message queues, which increases fault tolerance and reliability.",
     multiSelect: false,
+    id: 210,
   },
   {
     question:
@@ -3086,6 +3250,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon ECS is a fully managed container orchestration service that makes it easy to deploy, manage, and scale containerized applications.",
     multiSelect: false,
+    id: 211,
   },
   {
     question:
@@ -3100,6 +3265,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Kinesis Data Streams allows you to collect, process, and analyze real-time, streaming data, enabling real-time analytics.",
     multiSelect: false,
+    id: 212,
   },
   {
     question:
@@ -3114,6 +3280,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Key Management Service (KMS) allows you to create and control the encryption keys used to encrypt your data across AWS services.",
     multiSelect: false,
+    id: 213,
   },
   {
     question:
@@ -3128,6 +3295,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Control Tower provides a central point to manage multi-account environments with governance, compliance, and auditing capabilities.",
     multiSelect: false,
+    id: 214,
   },
   {
     question:
@@ -3142,6 +3310,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon GuardDuty is a threat detection service that continuously monitors for malicious activity and unauthorized behavior.",
     multiSelect: false,
+    id: 215,
   },
   {
     question:
@@ -3156,6 +3325,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Identity and Access Management (IAM) helps you securely manage user identities and control access to AWS resources.",
     multiSelect: false,
+    id: 216,
   },
   {
     question:
@@ -3170,6 +3340,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS KMS allows you to manage your own encryption keys, which can be used to encrypt data stored in Amazon S3.",
     multiSelect: false,
+    id: 217,
   },
   {
     question:
@@ -3184,6 +3355,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon EC2 Auto Scaling can automatically recover an Amazon EC2 instance if it becomes impaired by terminating the instance and launching a new one.",
     multiSelect: false,
+    id: 218,
   },
   {
     question:
@@ -3199,6 +3371,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Backup can automate backup processes for disaster recovery, and Amazon Route 53 can route traffic to backup sites in case of an outage.",
     multiSelect: true,
+    id: 219,
   },
   {
     question:
@@ -3213,6 +3386,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon RDS provides a fully managed relational database service with automated backups, software patching, and automatic failover.",
     multiSelect: false,
+    id: 220,
   },
   {
     question:
@@ -3227,6 +3401,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Organizations enables you to centrally manage and enforce security policies across multiple AWS accounts.",
     multiSelect: false,
+    id: 221,
   },
   {
     question:
@@ -3241,6 +3416,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS CloudFormation allows you to define and deploy infrastructure as code using YAML or JSON templates.",
     multiSelect: false,
+    id: 222,
   },
   {
     question:
@@ -3255,6 +3431,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Perspective provides a visualization of AWS Cloud workloads, enabling users to create architecture diagrams with real-time data from their AWS environment.",
     multiSelect: false,
+    id: 223,
   },
   {
     question:
@@ -3269,6 +3446,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Snowball is a petabyte-scale data transport solution that uses secure physical devices to transfer large amounts of data into and out of AWS.",
     multiSelect: false,
+    id: 224,
   },
   {
     question:
@@ -3283,6 +3461,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS SageMaker provides a fully managed service that allows developers and data scientists to build, train, and deploy machine learning models without managing the infrastructure.",
     multiSelect: false,
+    id: 225,
   },
   {
     question:
@@ -3297,6 +3476,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Network Access Control Lists (ACLs) provide an additional layer of security at the subnet level by controlling traffic in and out of one or more subnets.",
     multiSelect: false,
+    id: 226,
   },
   {
     question:
@@ -3311,6 +3491,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Fargate allows you to run containers without having to manage the underlying infrastructure, as it abstracts the compute layer from the user.",
     multiSelect: false,
+    id: 227,
   },
   {
     question:
@@ -3325,6 +3506,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Compute Optimizer analyzes historical utilization metrics and makes recommendations for the best-suited instance types to improve performance and save costs.",
     multiSelect: false,
+    id: 228,
   },
   {
     question:
@@ -3339,6 +3521,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Audit Manager helps you continuously audit your AWS usage to simplify how you assess risk and compliance with regulations and industry standards.",
     multiSelect: false,
+    id: 229,
   },
   {
     question:
@@ -3353,6 +3536,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon SQS is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications.",
     multiSelect: false,
+    id: 230,
   },
   {
     question:
@@ -3367,6 +3551,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon CloudWatch Logs collects and monitors log data from AWS services and applications, allowing real-time analysis of application performance.",
     multiSelect: false,
+    id: 231,
   },
   {
     question:
@@ -3381,6 +3566,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Data Lifecycle Manager automates the creation, retention, and deletion of Amazon EBS snapshots, reducing the need for manual processes.",
     multiSelect: false,
+    id: 232,
   },
   {
     question:
@@ -3395,6 +3581,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon DynamoDB provides a managed NoSQL database that supports key-value and document data models. It's optimized for high-performance and low-latency requirements.",
     multiSelect: false,
+    id: 233,
   },
   {
     question:
@@ -3409,6 +3596,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS CloudFormation allows users to model and set up their AWS resources so they can spend less time managing those resources and more time focusing on their applications. It's ideal for deploying infrastructure across multiple regions.",
     multiSelect: false,
+    id: 234,
   },
   {
     question:
@@ -3423,6 +3611,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Organizations offers policy-based management for multiple AWS accounts. By using organizations, you can create groups of accounts and then apply policies to those groups, simplifying the management of billing and access.",
     multiSelect: false,
+    id: 235,
   },
   {
     question:
@@ -3437,6 +3626,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Server Migration Service (SMS) helps you migrate on-premises workloads to AWS, minimizing changes to your applications by enabling an automated, simplified process for server migrations.",
     multiSelect: false,
+    id: 236,
   },
   {
     question:
@@ -3451,6 +3641,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Batch enables developers, scientists, and engineers to easily and efficiently run hundreds of thousands of batch computing jobs on AWS. It dynamically provisions the optimal quantity and type of compute resources.",
     multiSelect: false,
+    id: 237,
   },
   {
     question:
@@ -3465,6 +3656,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Kinesis Data Streams allows you to build custom real-time applications that can continuously process or analyze streaming data. It's particularly useful for detecting anomalies in real-time data streams.",
     multiSelect: false,
+    id: 238,
   },
   {
     question:
@@ -3479,6 +3671,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Config continuously monitors and records your AWS resource configurations and allows you to automate the evaluation of recorded configurations against desired configurations.",
     multiSelect: false,
+    id: 239,
   },
   {
     question:
@@ -3493,6 +3686,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Control Tower automates the setup of a new multi-account AWS environment based on AWS best practices and provides guardrails to enforce compliance with policies.",
     multiSelect: false,
+    id: 240,
   },
   {
     question:
@@ -3507,6 +3701,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS ParallelCluster is an open-source cluster management tool that makes it easy to deploy and manage High Performance Computing (HPC) clusters on AWS.",
     multiSelect: false,
+    id: 241,
   },
   {
     question:
@@ -3521,6 +3716,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon S3 can be used to host a simple static website. You can configure your S3 bucket as a static website and host your static content such as HTML, CSS, and images.",
     multiSelect: false,
+    id: 242,
   },
   {
     question:
@@ -3535,6 +3731,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Certificate Manager (ACM) handles the complexity of creating and managing SSL/TLS certificates, allowing you to provision, manage, and deploy certificates for use with AWS services and your internal connected resources.",
     multiSelect: false,
+    id: 243,
   },
   {
     question:
@@ -3549,6 +3746,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Snowmobile is an exabyte-scale data transfer service used to move large amounts of data (up to 100 PB) to AWS. It’s ideal for large-scale data migrations that would take too long over the internet.",
     multiSelect: false,
+    id: 244,
   },
   {
     question:
@@ -3563,6 +3761,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Elasticsearch Service allows you to deploy, secure, and operate Elasticsearch at scale with zero management overhead. It’s often used with Kibana to analyze, search, and visualize log data.",
     multiSelect: false,
+    id: 245,
   },
   {
     question:
@@ -3577,6 +3776,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Auto Scaling monitors your applications and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost.",
     multiSelect: false,
+    id: 246,
   },
   {
     question:
@@ -3591,6 +3791,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Virtual Private Cloud (VPC) enables you to create isolated networks within the AWS Cloud, providing control over your IP address ranges, subnets, route tables, and network gateways.",
     multiSelect: false,
+    id: 247,
   },
   {
     question:
@@ -3605,6 +3806,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Elastic File System (EFS) provides scalable file storage for use with Amazon EC2, allowing you to mount the same file system concurrently from multiple EC2 instances.",
     multiSelect: false,
+    id: 248,
   },
   {
     question:
@@ -3619,6 +3821,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Redshift is a fully managed data warehouse service in the cloud that allows you to run complex queries against structured and semi-structured data, enabling you to analyze your data efficiently.",
     multiSelect: false,
+    id: 249,
   },
   {
     question:
@@ -3633,6 +3836,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Config provides a detailed view of the configuration of AWS resources in your account, enabling you to automate compliance checks, assess risk, and troubleshoot issues.",
     multiSelect: false,
+    id: 250,
   },
   {
     question:
@@ -3647,6 +3851,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Elastic Compute Cloud (EC2) provides secure, resizable compute capacity in the cloud, and supports a wide range of instance types to accommodate various workloads and use cases.",
     multiSelect: false,
+    id: 251,
   },
   {
     question:
@@ -3661,6 +3866,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Glue is a fully managed ETL service that makes it easy to prepare and load data for analytics, enabling you to categorize, clean, enrich, and move data between various data stores.",
     multiSelect: false,
+    id: 252,
   },
   {
     question:
@@ -3675,6 +3881,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Fargate allows you to run containers without managing the underlying EC2 instances. It abstracts the infrastructure management away from the user.",
     multiSelect: false,
+    id: 253,
   },
   {
     question:
@@ -3689,6 +3896,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Elastic Disaster Recovery helps you recover applications in AWS in the event of a disaster by replicating data across regions.",
     multiSelect: false,
+    id: 254,
   },
   {
     question:
@@ -3703,6 +3911,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon OpenSearch Service (formerly Amazon Elasticsearch Service) allows for real-time search, analysis, and visualization of log data.",
     multiSelect: false,
+    id: 255,
   },
   {
     question:
@@ -3717,6 +3926,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Elastic Beanstalk provides a fully managed service for deploying and scaling web applications and services developed with various programming languages.",
     multiSelect: false,
+    id: 256,
   },
   {
     question:
@@ -3731,6 +3941,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Config enables continuous monitoring of your AWS resources for compliance, auditing, and governance.",
     multiSelect: false,
+    id: 257,
   },
   {
     question:
@@ -3745,6 +3956,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Lambda allows you to run code in response to events without managing the underlying infrastructure.",
     multiSelect: false,
+    id: 258,
   },
   {
     question:
@@ -3759,6 +3971,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Direct Connect provides a dedicated network connection from your on-premises data center to AWS, offering higher bandwidth and more reliable connectivity.",
     multiSelect: false,
+    id: 259,
   },
   {
     question:
@@ -3773,6 +3986,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon S3 is an object storage service that offers industry-leading scalability, data availability, security, and performance.",
     multiSelect: false,
+    id: 260,
   },
   {
     question:
@@ -3787,6 +4001,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Control Tower offers the easiest way to set up and govern a secure, multi-account AWS environment based on AWS best practices.",
     multiSelect: false,
+    id: 261,
   },
   {
     question:
@@ -3801,6 +4016,7 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "Amazon Kendra is an intelligent search service powered by machine learning, making it easy to search across different content repositories.",
     multiSelect: false,
+    id: 262,
   },
   {
     question:
@@ -3815,5 +4031,6 @@ export const shuffledQuestions: Question[] = shuffleArray([
     explanation:
       "AWS Step Functions allows you to coordinate multiple AWS services into serverless workflows so that you can build and update applications quickly.",
     multiSelect: false,
+    id: 263,
   },
-]);
+];
