@@ -28,7 +28,7 @@ export default function RootLayout({
               {children}
             </div>
           </main>
-          <footer className="container w-full flex-shrink-0 pb-6 pt-4 text-center text-sm text-gray-700 dark:text-gray-400">
+          <footer className="container w-full flex-shrink-0 pb-6 pt-4 text-center text-xs text-gray-600 dark:text-gray-400">
             <p className="mx-auto mb-2 max-w-xl">
               This practice quiz is independently created and is not affiliated
               with or endorsed by Amazon Web Services{" "}
