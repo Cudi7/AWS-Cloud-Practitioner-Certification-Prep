@@ -24,7 +24,8 @@ export default function Quiz() {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const answerSectionRef = useRef<HTMLDivElement>(null); // Create a ref
+  const answerSectionRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const savedProgress = localStorage.getItem("quizProgress");
@@ -100,10 +101,14 @@ export default function Quiz() {
       (currentQuestionIndex + 1) % questionsArray.length;
     setCurrentQuestionIndex(nextQuestionIndex);
     localStorage.setItem("quizProgress", nextQuestionIndex.toString()); // Save the next question index
+
+    setTimeout(() => {
+      titleRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 0);
   };
 
   return (
-    <Card className="max-w-xl dark:bg-gray-800">
+    <Card ref={titleRef} className="max-w-xl dark:bg-gray-800">
       <CardHeader>
         <CardTitle>Quiz Question</CardTitle>
         <CardDescription className="dark:text-gray-400">
