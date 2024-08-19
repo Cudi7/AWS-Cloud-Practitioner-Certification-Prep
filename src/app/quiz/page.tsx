@@ -111,15 +111,13 @@ export default function Quiz() {
     <Card ref={titleRef} className="max-w-lg dark:bg-gray-800">
       <CardHeader>
         <CardTitle>Quiz Question</CardTitle>
-        <CardDescription className="dark:text-gray-400 sm:text-base">
+        <CardDescription className="text-base dark:text-gray-400">
           {currentQuestion.multiSelect ? "Multiple Answers" : "Single Answer"}
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div>
-          <p className="text-sm font-medium leading-none sm:text-base">
-            {currentQuestion.question}
-          </p>
+          <p className="text-base font-medium">{currentQuestion.question}</p>
         </div>
         <div className="grid items-start gap-4">
           {currentQuestion.options.map((option, idx) => (
@@ -174,7 +172,7 @@ export default function Quiz() {
                 <p className="text-sm font-medium leading-none sm:text-base">
                   Correct Answer:
                 </p>
-                <p className="text-muted-foreground text-sm dark:text-gray-400 sm:text-base">
+                <p className="text-muted-foreground text-base dark:text-gray-400">
                   {Array.isArray(currentQuestion.answer)
                     ? currentQuestion.answer.join(", ")
                     : currentQuestion.answer}
@@ -184,7 +182,7 @@ export default function Quiz() {
             <p className="text-sm font-medium leading-none sm:text-base">
               Explanation:
             </p>
-            <p className="text-muted-foreground text-sm dark:text-gray-400 sm:text-base">
+            <p className="text-muted-foreground text-base dark:text-gray-400">
               {currentQuestion.explanation}
             </p>
           </div>
