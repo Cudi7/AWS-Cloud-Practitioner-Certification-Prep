@@ -108,16 +108,16 @@ export default function Quiz() {
   };
 
   return (
-    <Card ref={titleRef} className="max-w-xl dark:bg-gray-800">
+    <Card ref={titleRef} className="max-w-lg dark:bg-gray-800">
       <CardHeader>
         <CardTitle>Quiz Question</CardTitle>
-        <CardDescription className="dark:text-gray-400">
+        <CardDescription className="dark:text-gray-400 sm:text-base">
           {currentQuestion.multiSelect ? "Multiple Answers" : "Single Answer"}
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div>
-          <p className="text-sm font-medium leading-none">
+          <p className="text-sm font-medium leading-none sm:text-base">
             {currentQuestion.question}
           </p>
         </div>
@@ -136,7 +136,7 @@ export default function Quiz() {
               <Label
                 htmlFor={`option-${idx}`}
                 className={cn(
-                  "border-muted bg-popover hover:bg-accent hover:text-accent-foreground flex flex-col items-center justify-between rounded-md border-2 p-4 peer-checked:border-slate-400 dark:border-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600",
+                  "border-muted bg-popover hover:bg-accent hover:text-accent-foreground flex flex-col items-center justify-between rounded-md border-2 p-4 peer-checked:border-slate-400 dark:border-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 sm:text-base",
                   {
                     "cursor-not-allowed opacity-50": showAnswer, // Make the options visually disabled if answer is shown
                   },
@@ -171,18 +171,20 @@ export default function Quiz() {
             )}
             {!isCorrect && (
               <>
-                <p className="text-sm font-medium leading-none">
+                <p className="text-sm font-medium leading-none sm:text-base">
                   Correct Answer:
                 </p>
-                <p className="text-muted-foreground text-sm dark:text-gray-400">
+                <p className="text-muted-foreground text-sm dark:text-gray-400 sm:text-base">
                   {Array.isArray(currentQuestion.answer)
                     ? currentQuestion.answer.join(", ")
                     : currentQuestion.answer}
                 </p>
               </>
             )}
-            <p className="text-sm font-medium leading-none">Explanation:</p>
-            <p className="text-muted-foreground text-sm dark:text-gray-400">
+            <p className="text-sm font-medium leading-none sm:text-base">
+              Explanation:
+            </p>
+            <p className="text-muted-foreground text-sm dark:text-gray-400 sm:text-base">
               {currentQuestion.explanation}
             </p>
           </div>
