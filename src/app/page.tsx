@@ -1,4 +1,4 @@
-import { ButtonActions } from "./components/button-actions";
+import { ButtonActions } from "./button-actions";
 
 export default function HomePage() {
   return (

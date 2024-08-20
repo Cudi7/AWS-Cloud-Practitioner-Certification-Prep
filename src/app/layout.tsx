@@ -2,8 +2,8 @@ import "@/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
-import { ThemeProvider } from "@/app/components/theme-provider";
-import { Navbar } from "./components/navbar";
+import { Navbar } from "@/components/navbar";
+import { ThemeProvider } from "@/components/shared/theme-provider";
 
 export const metadata: Metadata = {
   title: "AWS Cloud Practitioner Certification Prep",

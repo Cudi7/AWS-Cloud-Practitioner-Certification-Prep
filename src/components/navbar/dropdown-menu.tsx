@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { ModeToggle } from "./mode-toggle"; // Local component import
+import { ModeToggle } from "@/components/shared/mode-toggle"; // Local component import
 import Link from "next/link";
 
 export function DropdownMenuDemo() {

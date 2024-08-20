@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
-import { DropdownMenuDemo } from "./dropdown-menu";
-import { ModeToggle } from "./mode-toggle";
+import { DropdownMenuDemo } from "@/components/navbar/dropdown-menu";
+import { ModeToggle } from "@/components/shared/mode-toggle";
 
 export function Navbar() {
   return (
@@ -35,13 +35,13 @@ export function Navbar() {
         </Link>
         <div className="hidden items-center gap-4 sm:flex sm:gap-8">
           <Link
-            className="text-sm font-semibold leading-6 hover:text-indigo-500 dark:hover:text-indigo-400"
+            className="text-sm font-semibold hover:text-indigo-500 dark:hover:text-indigo-400"
             href="/"
           >
             Home
           </Link>
           <Link
-            className="text-sm font-semibold leading-6 hover:text-indigo-500 dark:hover:text-indigo-400"
+            className="text-sm font-semibold hover:text-indigo-500 dark:hover:text-indigo-400"
             href="/rankings"
           >
             Rankings
