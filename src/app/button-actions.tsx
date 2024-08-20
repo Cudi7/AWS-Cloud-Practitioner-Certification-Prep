@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Play, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,31 +13,12 @@ import {
 } from "@/components/ui/dialog";
 // import { Label } from "@/components/ui/label";
 
+import { useQuizProgress } from "@/lib/hooks/useQuizProgress";
+
 export function ButtonActions() {
-  const [hasProgress, setHasProgress] = useState(false);
-  const [loading, setLoading] = useState(true); // Track loading state
+  const { hasProgress, loading, resetProgress } = useQuizProgress();
 
-  useEffect(() => {
-    const savedProgress = localStorage.getItem("quizProgress");
-    setHasProgress(!!savedProgress);
-    setLoading(false); // Set loading to false once check is complete
-  }, []);
-
-  const handleResetProgress = (): void => {
-    localStorage.removeItem("quizProgress");
-    setHasProgress(false);
-  };
-
-  if (loading) {
-    return (
-      <div className="mx-auto w-full max-w-sm rounded-md p-4">
-        <div className="flex animate-spin space-x-4">
-          <div className="h-10 w-10 rounded-full bg-slate-700"></div>
-        </div>
-        <p className="mt-5">loading...</p>
-      </div>
-    );
-  }
+  if (loading) return <LoadingSpinner />;
 
   return (
     <>
@@ -69,7 +49,6 @@ export function ButtonActions() {
               <DialogHeader>
                 <DialogTitle>Reset Quiz Progress</DialogTitle>
                 <DialogDescription>
-                  {" "}
                   This action will permanently delete all your saved progress
                   for the quiz. You won&#39;t be able to undo this. Are you sure
                   you want to proceed?
@@ -77,7 +56,7 @@ export function ButtonActions() {
               </DialogHeader>
 
               <DialogFooter>
-                <Button onClick={handleResetProgress} variant={"destructive"}>
+                <Button onClick={resetProgress} variant={"destructive"}>
                   Confirm Reset
                 </Button>
               </DialogFooter>
@@ -86,5 +65,16 @@ export function ButtonActions() {
         </div>
       )}
     </>
+  );
+}
+
+function LoadingSpinner() {
+  return (
+    <div className="mx-auto w-full max-w-sm rounded-md p-4">
+      <div className="flex animate-spin space-x-4">
+        <div className="h-10 w-10 rounded-full bg-slate-700"></div>
+      </div>
+      <p className="mt-5">loading...</p>
+    </div>
   );
 }
