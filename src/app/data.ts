@@ -350,16 +350,16 @@ export const questionsArray: Question[] = [
   },
   {
     question:
-      "22. Which AWS service or feature is used for troubleshooting network connectivity between Amazon EC2 instances?",
+      "22. Which AWS service or feature helps diagnose connectivity issues between Amazon EC2 instances?",
     options: [
-      "A. AWS Certificate Manager (ACM)",
-      "B. Internet Gateway",
-      "C. VPC Flow Logs",
-      "D. AWS CloudHSM",
+      "A. VPC Flow Logs",
+      "B. Amazon CloudWatch",
+      "C. AWS CloudTrail",
+      "D. AWS Reachability Analyzer",
     ],
-    answer: "C. VPC Flow Logs",
+    answer: "D. AWS Reachability Analyzer",
     explanation:
-      "VPC Flow Logs enables users to capture information about the IP traffic flowing to and from network interfaces in their VPC, aiding in troubleshooting network connectivity between Amazon EC2 instances.",
+      "AWS Reachability Analyzer is a service that helps diagnose and troubleshoot network connectivity issues between Amazon EC2 instances within a VPC, ensuring that the network paths are correctly configured.",
     multiSelect: false,
     id: 22,
   },
@@ -379,61 +379,61 @@ export const questionsArray: Question[] = [
   },
   {
     question:
-      "24. Which AWS service or feature gives users the ability to provision a dedicated private network connection from their internal network to AWS?",
+      "24. Which AWS feature enables you to establish a private connection from your data center to AWS, bypassing the public internet?",
     options: [
-      "A. AWS CloudHSM",
-      "B. AWS Direct Connect",
-      "C. AWS VPN",
-      "D. Amazon Connect",
+      "A. AWS VPN",
+      "B. Amazon VPC Peering",
+      "C. AWS Direct Connect",
+      "D. AWS Transit Gateway",
     ],
-    answer: "B. AWS Direct Connect",
+    answer: "C. AWS Direct Connect",
     explanation:
-      "AWS Direct Connect allows users to establish a dedicated private network connection from their internal network to AWS, which can reduce network costs, increase bandwidth, and provide a more consistent connection than internet-based connections.",
+      "AWS Direct Connect allows you to establish a dedicated network connection from your premises to AWS, providing a more consistent network experience compared to internet-based connections.",
     multiSelect: false,
     id: 24,
   },
   {
     question:
-      "25. A company is using a third-party service to back up 10 TB of data to a tape library. The on-premises backup server is running out of space. The company wants to use AWS services for the backups without changing their existing backup workflows. Which AWS service should the company use to meet these requirements?",
+      "25. A company wants to move its backup solution to the AWS Cloud but needs to maintain compatibility with its existing backup software that uses virtual tape libraries. Which AWS service should the company implement?",
     options: [
-      "A. Amazon Elastic Block Store (Amazon EBS)",
+      "A. Amazon S3",
       "B. AWS Storage Gateway",
-      "C. Amazon Elastic Container Service (Amazon ECS)",
-      "D. AWS Lambda",
+      "C. Amazon Glacier",
+      "D. Amazon RDS",
     ],
     answer: "B. AWS Storage Gateway",
     explanation:
-      "The company should use AWS Storage Gateway, specifically the Tape Gateway option, to integrate their existing backup workflows with AWS without the need for significant changes, allowing for efficient backup to the cloud.",
+      "AWS Storage Gateway, specifically the Tape Gateway, enables seamless integration of existing backup software with AWS by providing a virtual tape library interface.",
     multiSelect: false,
     id: 25,
   },
   {
     question:
-      "26. A company needs to continuously monitor its environment to analyze network and account activity and identify potential security threats. Which AWS service should the company use to meet these needs?",
+      "26. A company is looking to implement a service that provides continuous threat detection and leverages machine learning to identify abnormal behavior within its AWS environment. Which AWS service should they choose?",
     options: [
-      "A. AWS Artifact",
+      "A. AWS CloudTrail",
       "B. Amazon Macie",
-      "C. AWS Identity and Access Management (IAM)",
+      "C. AWS Security Hub",
       "D. Amazon GuardDuty",
     ],
     answer: "D. Amazon GuardDuty",
     explanation:
-      "Amazon GuardDuty is a service that provides threat detection and continuous monitoring for the AWS environment, analyzing network and account activity to identify anomalous or unauthorized behavior.",
+      "Amazon GuardDuty uses machine learning, anomaly detection, and integrated threat intelligence to continuously monitor and protect your AWS accounts and workloads.",
     multiSelect: false,
     id: 26,
   },
   {
     question:
-      "27. A cloud engineer wants to know the percentage of allocated compute units that are in use for a specific Amazon EC2 instance. Which AWS service can provide this information?",
+      "27. A cloud engineer needs to monitor the CPU utilization and disk I/O operations of an Amazon EC2 instance to optimize its performance. Which AWS service should be used to gather this data?",
     options: [
-      "A. AWS CloudTrail",
-      "B. AWS Config",
-      "C. Amazon CloudWatch",
-      "D. AWS Artifact",
+      "A. Amazon CloudWatch",
+      "B. AWS Trusted Advisor",
+      "C. AWS Cost Explorer",
+      "D. AWS CloudTrail",
     ],
-    answer: "C. Amazon CloudWatch",
+    answer: "A. Amazon CloudWatch",
     explanation:
-      "Amazon CloudWatch can provide detailed metrics about Amazon EC2 instance utilization, including the percentage of allocated compute units in use, allowing users to monitor and optimize performance.",
+      "Amazon CloudWatch provides comprehensive monitoring of AWS resources, including metrics on CPU utilization, disk I/O, and more, to help optimize performance.",
     multiSelect: false,
     id: 27,
   },
@@ -453,16 +453,17 @@ export const questionsArray: Question[] = [
     id: 28,
   },
   {
-    question: "29. Which AWS service provides highly durable object storage?",
+    question:
+      "29. Which AWS service provides persistent, resilient storage for objects, ensuring they are durably stored and accessible?",
     options: [
-      "A. Amazon S3",
-      "B. Amazon Elastic File System (Amazon EFS)",
-      "C. Amazon Elastic Block Store (Amazon EBS)",
-      "D. Amazon FSx",
+      "A. Amazon EBS",
+      "B. Amazon S3",
+      "C. Amazon Glacier",
+      "D. Amazon EFS",
     ],
-    answer: "A. Amazon S3",
+    answer: "B. Amazon S3",
     explanation:
-      "Amazon S3 provides highly durable object storage, designed to store and retrieve any amount of data from anywhere, offering scalability, security, durability, and high availability.",
+      "Amazon S3 is designed to provide 99.999999999% durability, making it a highly reliable storage service for objects. It is ideal for storing large amounts of unstructured data.",
     multiSelect: false,
     id: 29,
   },
@@ -593,30 +594,31 @@ export const questionsArray: Question[] = [
   },
   {
     question:
-      "38. Which AWS service or feature is used for troubleshooting network connectivity between Amazon EC2 instances?",
+      "38. A company suspects that an unauthorized IP address is trying to access its EC2 instances. Which AWS service can be used to capture and analyze the traffic data for investigation?",
     options: [
-      "A. AWS Certificate Manager (ACM)",
-      "B. Internet Gateway",
+      "A. Amazon CloudFront",
+      "B. AWS Identity and Access Management (IAM)",
       "C. VPC Flow Logs",
-      "D. AWS CloudHSM",
+      "D. Amazon S3",
     ],
     answer: "C. VPC Flow Logs",
     explanation:
-      "VPC Flow Logs is a feature that allows users to capture information about network traffic to and from their VPCs, aiding in troubleshooting connectivity.",
+      "VPC Flow Logs provide a detailed record of IP traffic going to and from network interfaces in a VPC, which is essential for investigating unauthorized access attempts.",
     multiSelect: false,
     id: 38,
   },
   {
-    question: "39. Which AWS service provides highly durable object storage?",
+    question:
+      "39. A startup company needs a scalable storage solution for storing large volumes of user-generated content, with a focus on durability and availability. Which AWS service should the company choose?",
     options: [
-      "A. Amazon S3",
-      "B. Amazon Elastic File System (Amazon EFS)",
-      "C. Amazon Elastic Block Store (Amazon EBS)",
-      "D. Amazon FSx",
+      "A. Amazon EFS",
+      "B. Amazon S3",
+      "C. Amazon RDS",
+      "D. AWS Lambda",
     ],
-    answer: "A. Amazon S3",
+    answer: "B. Amazon S3",
     explanation:
-      "Amazon S3 provides highly durable object storage, ideal for a wide variety of cloud storage use cases.",
+      "Amazon S3 is ideal for storing large amounts of data due to its high durability, availability, and scalability, making it a perfect fit for user-generated content.",
     multiSelect: false,
     id: 39,
   },
@@ -637,16 +639,17 @@ export const questionsArray: Question[] = [
   },
   {
     question:
-      "41. A company wants its Amazon EC2 instances to operate in a highly available environment, even in case of a natural disaster in a specific geographic area. Which solution achieves this goal?",
+      "41. How can a company ensure its Amazon EC2 instances remain operational in a geographically diverse environment, even during regional outages?",
     options: [
-      "A. Use EC2 instances in a single Availability Zone",
-      "B. Use EC2 instances across multiple AWS Regions",
-      "C. Use EC2 instances across multiple edge locations",
-      "D. Use Amazon CloudFront with the EC2 instances configured as the origin",
+      "A. Deploy EC2 instances in multiple Availability Zones within a single region.",
+      "B. Use AWS Global Accelerator to direct traffic across regions.",
+      "C. Implement Amazon Route 53 for DNS failover across regions.",
+      "D. Set up EC2 instances in multiple AWS regions and use multi-region failover mechanisms.",
     ],
-    answer: "B. Use EC2 instances across multiple AWS Regions",
+    answer:
+      "D. Set up EC2 instances in multiple AWS regions and use multi-region failover mechanisms.",
     explanation:
-      "Using EC2 instances across multiple AWS Regions can help ensure high availability of the application, even in the event of natural disasters affecting a specific geographic area.",
+      "By setting up EC2 instances in multiple AWS regions and using multi-region failover strategies, companies can achieve high availability and disaster recovery, ensuring operations continue during regional disruptions.",
     multiSelect: false,
     id: 41,
   },
@@ -796,16 +799,16 @@ export const questionsArray: Question[] = [
   },
   {
     question:
-      "52. Which AWS service should a cloud engineer use to visualize API calls to AWS services?",
+      "52. Which AWS service provides detailed logging and tracking of API calls across your AWS account to ensure compliance and operational troubleshooting?",
     options: [
       "A. Amazon CloudWatch",
       "B. AWS CloudTrail",
-      "C. AWS Config",
-      "D. AWS Artifact",
+      "C. AWS X-Ray",
+      "D. Amazon Macie",
     ],
     answer: "B. AWS CloudTrail",
     explanation:
-      "AWS CloudTrail is a service that provides a history of AWS API calls for your AWS account, allowing users to audit and review account activity.",
+      "AWS CloudTrail records API calls for your account, delivering detailed logs that are essential for compliance audits and troubleshooting operational issues.",
     multiSelect: false,
     id: 52,
   },
@@ -1225,20 +1228,18 @@ export const questionsArray: Question[] = [
   },
   {
     question:
-      "80. Which of the following are customer responsibilities according to the AWS Shared Responsibility Model? (Select TWO.)",
+      "80. Which of the following are examples of tasks that customers must manage according to the AWS Shared Responsibility Model? (Select TWO.)",
     options: [
-      "A. Physical security of AWS facilities",
-      "B. Security group configuration",
-      "C. Encryption of customer data on AWS",
-      "D. AWS Lambda infrastructure management",
-      "E. Network bandwidth management of each AWS Region",
+      "A. Securing the operating system and application software running on AWS resources",
+      "B. Maintaining the hardware infrastructure supporting the AWS Cloud",
+      "C. Configuring security settings such as IAM roles and policies",
+      "D. Ensuring that the AWS data centers have proper physical security",
+      "E. Monitoring network security groups and firewall configurations",
     ],
-    answer: [
-      "B. Security group configuration",
-      "C. Encryption of customer data on AWS",
-    ],
+    answer:
+      "A. Securing the operating system and application software running on AWS resources, C. Configuring security settings such as IAM roles and policies",
     explanation:
-      "The AWS Shared Responsibility Model outlines how AWS and the customer share responsibility for security and compliance of the AWS environment. AWS is responsible for the security of the cloud, which includes the physical security of AWS facilities, infrastructure, hardware, software, and networking that run AWS services. The customer is responsible for security in the cloud, which includes security group configuration, encryption of customer data on AWS, AWS Lambda infrastructure management, and network bandwidth management of each AWS Region.",
+      "Under the AWS Shared Responsibility Model, customers are responsible for securing their data, applications, and managing access controls within their environment.",
     multiSelect: true,
     id: 80,
   },
@@ -1308,16 +1309,16 @@ export const questionsArray: Question[] = [
   },
   {
     question:
-      "85. Which AWS service should a cloud professional use to receive real-time guidance for provisioning resources, based on AWS best practices related to security, cost optimization, and service limits?",
+      "85. An organization wants to ensure that its AWS environment is optimized according to AWS best practices for cost, security, and performance. Which AWS service should they use for continuous guidance?",
     options: [
-      "A. AWS Trusted Advisor",
-      "B. AWS Config",
-      "C. AWS Security Hub",
-      "D. AWS Systems Manager",
+      "A. AWS Config",
+      "B. AWS Trusted Advisor",
+      "C. Amazon Inspector",
+      "D. AWS CloudTrail",
     ],
-    answer: "A. AWS Trusted Advisor",
+    answer: "B. AWS Trusted Advisor",
     explanation:
-      "AWS Trusted Advisor is the AWS service that provides real-time guidance for provisioning resources, based on AWS best practices related to security, cost optimization, and service limits. AWS Trusted Advisor inspects your AWS environment and provides recommendations for improving performance, security, and reliability, reducing costs, and following best practices. AWS Trusted Advisor also alerts you when you are approaching or exceeding your service limits and helps you request limit increases.",
+      "AWS Trusted Advisor provides ongoing guidance aligned with AWS best practices, helping users optimize their cloud environment for cost, security, and performance.",
     multiSelect: false,
     id: 85,
   },
@@ -1338,16 +1339,16 @@ export const questionsArray: Question[] = [
   },
   {
     question:
-      "87. Which AWS service or feature captures information about inbound and outbound network traffic from an Amazon EC2 instance?",
+      "87. To analyze the flow of data in and out of Amazon EC2 instances for security purposes, which AWS feature should be utilized?",
     options: [
-      "A. VPC Reachability Analyzer",
-      "B. Amazon Athena",
+      "A. AWS Config",
+      "B. Amazon CloudWatch Logs",
       "C. VPC Flow Logs",
-      "D. AWS X-Ray",
+      "D. AWS Trusted Advisor",
     ],
     answer: "C. VPC Flow Logs",
     explanation:
-      "The correct answer is C because VPC Flow Logs are an AWS service or feature that capture information about inbound and outbound network traffic from an Amazon EC2 instance. VPC Flow Logs are a feature that enables customers to capture information about the IP traffic going to and from network interfaces in their VPCs. VPC Flow Logs can help customers monitor and troubleshoot connectivity issues, such as traffic that is not reaching an instance or traffic that is being rejected by a security group. The other options are incorrect because they are not AWS services or features that capture information about inbound and outbound network traffic from an Amazon EC2 instance. VPC Reachability Analyzer is an AWS service or feature that allows customers to perform connectivity testing between resources in their VPCs and identify configuration issues that prevent connectivity. Amazon Athena is an AWS service that allows customers to query data stored in Amazon S3 using standard SQL. AWS X-Ray is an AWS service that allows customers to analyze and debug distributed applications, such as those built using a microservices architecture.",
+      "VPC Flow Logs allows for the capture and analysis of IP traffic data to and from network interfaces in a VPC, which is vital for monitoring and securing network activity.",
     multiSelect: false,
     id: 87,
   },
