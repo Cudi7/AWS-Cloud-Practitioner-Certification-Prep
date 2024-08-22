@@ -46,6 +46,12 @@ export function Navbar() {
           >
             Rankings
           </Link>
+          <Link
+            className="text-sm font-semibold hover:text-indigo-500 dark:hover:text-indigo-400"
+            href="/about"
+          >
+            About
+          </Link>
 
           <a
             className="scale-[.85] text-sm/6 font-medium text-zinc-700 outline-blue-500 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
