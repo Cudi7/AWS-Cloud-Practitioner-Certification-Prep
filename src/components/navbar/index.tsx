@@ -33,7 +33,7 @@ export function Navbar() {
             </span>{" "}
           </h1>
         </Link>
-        <div className="hidden items-center gap-4 sm:flex sm:gap-8">
+        <div className="hidden items-center gap-4 sm:gap-8 md:flex">
           <Link
             className="text-sm font-semibold hover:text-indigo-500 dark:hover:text-indigo-400"
             href="/"
@@ -48,7 +48,7 @@ export function Navbar() {
           </Link>
 
           <a
-            className="text-sm/6 font-medium text-zinc-700 outline-blue-500 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
+            className="scale-[.85] text-sm/6 font-medium text-zinc-700 outline-blue-500 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
             href="https://buymeacoffee.com/cudi7"
             target="_blank"
             rel="noopener noreferrer"
@@ -77,7 +77,7 @@ export function Navbar() {
             </svg>
           </a>
         </div>
-        <div className="flex sm:hidden">
+        <div className="flex md:hidden">
           <DropdownMenuDemo />
         </div>
       </div>
