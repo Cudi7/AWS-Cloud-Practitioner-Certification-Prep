@@ -135,9 +135,14 @@ export default function Quiz() {
       <CardContent className="grid gap-4">
         <p className="text-base font-medium">{currentQuestion.question}</p>
         {showClue && (
-          <span className="text-slate-500 dark:text-slate-400">
-            {currentQuestion.clue}
-          </span>
+          <Alert
+            variant={null}
+            className="dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400"
+          >
+            <Lightbulb />
+
+            <AlertDescription>{currentQuestion.clue}</AlertDescription>
+          </Alert>
         )}
 
         <div className="grid items-start gap-4">
