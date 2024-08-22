@@ -1,7 +1,13 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ArrowRight, Check, AlertCircle, CheckCircle } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  AlertCircle,
+  CheckCircle,
+  Lightbulb,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,6 +27,7 @@ export default function Quiz() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [showAnswer, setShowAnswer] = useState(false);
+  const [showClue, setShowClue] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -97,6 +104,8 @@ export default function Quiz() {
     setShowAnswer(false);
     setSelectedOptions([]);
     setIsCorrect(null);
+    setShowClue(false);
+
     const nextQuestionIndex =
       (currentQuestionIndex + 1) % questionsArray.length;
     setCurrentQuestionIndex(nextQuestionIndex);
@@ -107,18 +116,30 @@ export default function Quiz() {
     }, 0);
   };
 
+  const handleClue = () => setShowClue(true);
+
   return (
     <Card ref={titleRef} className="max-w-lg dark:bg-gray-800">
-      <CardHeader>
-        <CardTitle>Quiz Question</CardTitle>
-        <CardDescription className="text-base dark:text-gray-400">
-          {currentQuestion.multiSelect ? "Multiple Answers" : "Single Answer"}
-        </CardDescription>
+      <CardHeader className="flex flex-row justify-between">
+        <div>
+          <CardTitle>Quiz Question</CardTitle>
+          <CardDescription className="text-base dark:text-gray-400">
+            {currentQuestion.multiSelect ? "Multiple Answers" : "Single Answer"}
+          </CardDescription>
+        </div>
+        <Lightbulb
+          className="cursor-pointer text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-500"
+          onClick={handleClue}
+        />
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div>
-          <p className="text-base font-medium">{currentQuestion.question}</p>
-        </div>
+        <p className="text-base font-medium">{currentQuestion.question}</p>
+        {showClue && (
+          <span className="text-slate-500 dark:text-slate-400">
+            {currentQuestion.clue}
+          </span>
+        )}
+
         <div className="grid items-start gap-4">
           {currentQuestion.options.map((option, idx) => (
             <div key={idx}>
