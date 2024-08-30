@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { CheckCircle, AlertCircle } from "lucide-react";
 import { type Question } from "@/app/data";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
@@ -6,11 +7,20 @@ type QuizAnswerProps = Pick<Question, "answer" | "explanation"> & {
   isCorrect: boolean | null;
 };
 
+const maxLength = 300;
+
+const truncateText = (text: string, maxLength: number) => {
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength) + "...";
+};
+
 export default function QuizAnswer({
   isCorrect,
   answer,
   explanation,
 }: QuizAnswerProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <div className="mt-4 space-y-2">
       <Alert
@@ -43,7 +53,15 @@ export default function QuizAnswer({
         Explanation:
       </p>
       <p className="text-muted-foreground text-base dark:text-gray-400">
-        {explanation}
+        {isExpanded ? explanation : truncateText(explanation, maxLength)}
+        {explanation.length > maxLength && (
+          <span
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="ml-2 cursor-pointer text-blue-500 hover:underline"
+          >
+            {isExpanded ? "Read Less" : "Read More"}
+          </span>
+        )}
       </p>
     </div>
   );

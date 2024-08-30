@@ -14,7 +14,7 @@ export default async function Quiz() {
   if (questionsArray.length === 0) throw new Error("The quiz data is empty.");
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-gray-900">
+    <div className="flex items-center justify-center">
       <QuizComponent questionsArray={questionsArray} />
     </div>
   );
