@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useId } from "react";
 import { Lightbulb, ArrowRight, Check } from "lucide-react";
-import { type Question } from "@/app/data";
+import { UserRanking, type Question } from "@/app/data";
 import QuizAnswer from "@/components/quiz/answer";
 import QuizQuestion from "@/components/quiz/question";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -28,6 +28,7 @@ export default function QuizComponent({
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const userId = useId();
   const titleRef = useRef<HTMLDivElement>(null);
   const answerSectionRef = useRef<HTMLDivElement>(null);
 
@@ -58,11 +59,12 @@ export default function QuizComponent({
   const handleCheckAnswer = () => {
     setShowAnswer(true);
 
-    const correctAnswer = currentQuestion.multiSelect
-      ? Array.isArray(currentQuestion.answer) &&
-        selectedOptions.sort().join(",") ===
-          currentQuestion.answer.sort().join(",")
-      : selectedOptions[0] === currentQuestion.answer;
+    const { multiSelect, answer } = currentQuestion;
+
+    const correctAnswer = multiSelect
+      ? Array.isArray(answer) &&
+        selectedOptions.sort().join(",") === answer.sort().join(",")
+      : selectedOptions[0] === answer;
 
     setIsCorrect(correctAnswer);
 
@@ -72,6 +74,9 @@ export default function QuizComponent({
   };
 
   const handleNextQuestion = () => {
+    saveRanking();
+    saveProgress();
+
     setShowAnswer(false);
     setSelectedOptions([]);
     setIsCorrect(null);
@@ -87,15 +92,35 @@ export default function QuizComponent({
     }, 0);
   };
 
-  useEffect(() => {
-    if (showClue) {
-      const timer = setTimeout(() => {
-        setShowClue(false);
-      }, 10000);
+  const saveProgress = () => {
+    const nextQuestionIndex =
+      (currentQuestionIndex + 1) % questionsArray.length;
+    setCurrentQuestionIndex(nextQuestionIndex);
+    localStorage.setItem("quizProgress", nextQuestionIndex.toString());
+  };
 
-      return () => clearTimeout(timer);
-    }
-  }, [showClue]);
+  const saveRanking = () => {
+    const userRanking = JSON.parse(
+      localStorage.getItem("quizRating") ?? "{}",
+    ) as UserRanking;
+
+    const total = (userRanking.total || 0) + 1;
+    const correct = isCorrect
+      ? (userRanking.correct || 0) + 1
+      : userRanking.correct || 0;
+    const incorrect = !isCorrect
+      ? (userRanking.incorrect || 0) + 1
+      : userRanking.incorrect || 0;
+
+    const progressData = {
+      userId,
+      total,
+      correct,
+      incorrect,
+    };
+
+    localStorage.setItem("quizRating", JSON.stringify(progressData));
+  };
 
   if (loading) {
     return (

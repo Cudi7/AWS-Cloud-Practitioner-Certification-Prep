@@ -5,14 +5,28 @@ const QuestionSchema = z.object({
   options: z.array(z.string()),
   answer: z.union([z.string(), z.array(z.string())]),
   explanation: z.string(),
-  multiSelect: z.string(),
+  multiSelect: z.boolean(),
   id: z.number(),
   clue: z.string(),
 });
 
+const UserRankingSchema = z.object({
+  total: z.number(),
+  correct: z.number(),
+  incorrect: z.number(),
+});
+
+export interface QuizRating {
+  userId: string;
+  total: number;
+  correct: number;
+  incorrect: number;
+}
+
 export const QuestionsArraySchema = z.array(QuestionSchema);
 
 export type Question = z.infer<typeof QuestionSchema>;
+export type UserRanking = z.infer<typeof UserRankingSchema>;
 
 // Utility function to shuffle an array using the Fisher-Yates algorithm
 export function shuffleArray(array: Question[]): Question[] {
