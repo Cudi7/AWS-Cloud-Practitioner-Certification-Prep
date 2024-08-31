@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Lightbulb, ArrowRight, Check } from "lucide-react";
 import { type Question } from "@/app/data";
-import QuizAnswer from "./answer";
+import QuizAnswer from "@/components/quiz/answer";
 import QuizQuestion from "@/components/quiz/question";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
@@ -43,12 +43,27 @@ export default function QuizComponent({
 
   const handleOptionChange = (option: string) => {
     if (showAnswer) return;
-    setSelectedOptions([option]);
+
+    if (currentQuestion.multiSelect) {
+      setSelectedOptions((prev) =>
+        prev.includes(option)
+          ? prev.filter((opt) => opt !== option)
+          : [...prev, option],
+      );
+    } else {
+      setSelectedOptions([option]);
+    }
   };
 
   const handleCheckAnswer = () => {
     setShowAnswer(true);
-    const correctAnswer = selectedOptions[0] === currentQuestion.answer;
+
+    const correctAnswer = currentQuestion.multiSelect
+      ? Array.isArray(currentQuestion.answer) &&
+        selectedOptions.sort().join(",") ===
+          currentQuestion.answer.sort().join(",")
+      : selectedOptions[0] === currentQuestion.answer;
+
     setIsCorrect(correctAnswer);
 
     setTimeout(() => {
