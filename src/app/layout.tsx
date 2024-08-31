@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/shared/theme-provider";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "AWS Cloud Practitioner Certification Prep",
@@ -26,6 +27,7 @@ export default function RootLayout({
           <main className="flex flex-grow flex-col items-center justify-center text-black dark:text-white">
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
               {children}
+              <Analytics />
             </div>
           </main>
           <footer className="container w-full flex-shrink-0 pb-6 pt-4 text-center text-xs text-gray-600 dark:text-gray-400">
