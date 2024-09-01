@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useId } from "react";
 import { Lightbulb, ArrowRight, Check } from "lucide-react";
-import { UserRanking, type Question } from "@/app/data";
+import { type UserRanking, type Question } from "@/app/data";
 import QuizAnswer from "@/components/quiz/answer";
 import QuizQuestion from "@/components/quiz/question";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -74,7 +74,7 @@ export default function QuizComponent({
   };
 
   const handleNextQuestion = () => {
-    saveRanking();
+    saveRanting();
     saveProgress();
 
     setShowAnswer(false);
@@ -99,7 +99,7 @@ export default function QuizComponent({
     localStorage.setItem("quizProgress", nextQuestionIndex.toString());
   };
 
-  const saveRanking = () => {
+  const saveRanting = () => {
     const userRanking = JSON.parse(
       localStorage.getItem("quizRating") ?? "{}",
     ) as UserRanking;
@@ -120,6 +120,7 @@ export default function QuizComponent({
     };
 
     localStorage.setItem("quizRating", JSON.stringify(progressData));
+    window.dispatchEvent(new Event("ratingUpdated"));
   };
 
   if (loading) {

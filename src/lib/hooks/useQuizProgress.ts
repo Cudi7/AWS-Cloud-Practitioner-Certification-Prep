@@ -37,7 +37,7 @@ export function useQuizProgress(
 
   const resetProgress = (): void => {
     localStorage.removeItem("quizProgress");
-    localStorage.removeItem("quizRanking");
+    localStorage.removeItem("quizRating");
     setCurrentQuestionIndex(initialIndex);
     setHasProgress(false);
   };

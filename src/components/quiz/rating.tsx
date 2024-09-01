@@ -2,27 +2,51 @@
 import { type QuizRating } from "@/app/data";
 import { useEffect, useState } from "react";
 
-function calculatePercentage(correct: number, total: number): string {
-  if (total === 0) return "0%";
-  const percentage = (correct / total) * 100;
-  return `${percentage.toFixed(2)}%`;
+function calculatePercentage(correct: number, total: number): number {
+  if (total === 0) return 0;
+  return (correct / total) * 100;
 }
 
 export default function Rating() {
   const [currentRating, setCurrentRating] = useState<QuizRating | null>(null);
-  //   const [loading, setLoading] = useState<boolean>(true);
+
+  const updateRating = () => {
+    const savedRating = localStorage.getItem("quizRating");
+    if (savedRating) setCurrentRating(JSON.parse(savedRating) as QuizRating);
+  };
 
   useEffect(() => {
-    const savedRating = localStorage.getItem("quizRating");
+    updateRating();
 
-    if (savedRating) setCurrentRating(JSON.parse(savedRating) as QuizRating);
+    window.addEventListener("ratingUpdated", updateRating);
 
-    // setLoading(false);
+    return () => {
+      window.removeEventListener("ratingUpdated", updateRating);
+    };
   }, []);
 
-  const ratingDisplay = currentRating
+  const percentage = currentRating
     ? calculatePercentage(currentRating.correct, currentRating.total)
-    : "No rating available";
+    : null;
 
-  return <p>Rating: {ratingDisplay}</p>;
+  const ratingDisplay =
+    percentage !== null ? `${percentage.toFixed(2)}%` : "No rating available";
+
+  let ratingColor = "text-red-500";
+
+  if (percentage !== null) {
+    if (percentage >= 70) {
+      ratingColor = "text-green-500";
+    } else if (percentage >= 50) {
+      ratingColor = "text-yellow-500";
+    }
+  }
+
+  return currentRating ? (
+    <p
+      className={`${ratingColor} absolute -top-10 right-0 font-semibold text-indigo-500`}
+    >
+      Rating: {ratingDisplay}
+    </p>
+  ) : null;
 }
