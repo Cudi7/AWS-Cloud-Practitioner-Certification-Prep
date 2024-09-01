@@ -77,7 +77,6 @@ export default function RandomQuizComponent({
     const nextQuestionIndex =
       (currentQuestionIndex + 1) % questionsArray.length;
     setCurrentQuestionIndex(nextQuestionIndex);
-    localStorage.setItem("quizProgress", nextQuestionIndex.toString());
 
     setTimeout(() => {
       titleRef.current?.scrollIntoView({ behavior: "smooth" });
