@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { Lightbulb, ArrowRight, Check } from "lucide-react";
 import { type Question, shuffleArray } from "@/app/data";
 import QuizAnswer from "@/components/quiz/answer";
@@ -30,7 +30,12 @@ export default function RandomQuizComponent({
   const titleRef = useRef<HTMLDivElement>(null);
   const answerSectionRef = useRef<HTMLDivElement>(null);
 
-  const currentQuestion = shuffleArray(questionsArray)[0]!;
+  const shuffledQuestions = useMemo(
+    () => shuffleArray([...questionsArray]),
+    [questionsArray],
+  );
+
+  const currentQuestion = shuffledQuestions[currentQuestionIndex]!;
 
   const handleOptionChange = (option: string) => {
     if (showAnswer) return;
@@ -91,6 +96,7 @@ export default function RandomQuizComponent({
         <Lightbulb
           className="cursor-pointer text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-500"
           onClick={() => setShowClue(true)}
+          aria-label="Show Clue"
         />
       </CardHeader>
       <CardContent className="grid gap-4">

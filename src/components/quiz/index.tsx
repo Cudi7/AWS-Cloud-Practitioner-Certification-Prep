@@ -155,6 +155,7 @@ export default function QuizComponent({
         <Lightbulb
           className="cursor-pointer text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-500"
           onClick={() => setShowClue(true)}
+          aria-label="Show Clue"
         />
       </CardHeader>
       <CardContent className="grid gap-4">
