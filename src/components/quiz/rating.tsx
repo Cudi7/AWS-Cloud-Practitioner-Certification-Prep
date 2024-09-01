@@ -1,4 +1,5 @@
 "use client";
+
 import { type QuizRating } from "@/app/data";
 import { useEffect, useState } from "react";
 
@@ -44,9 +45,9 @@ export default function Rating() {
 
   return currentRating ? (
     <p
-      className={`${ratingColor} absolute -top-10 right-0 font-semibold text-indigo-500`}
+      className={`${ratingColor} absolute -bottom-10 right-0 font-semibold text-indigo-500`}
     >
-      Rating: {ratingDisplay}
+      Approval Rate: {ratingDisplay}
     </p>
   ) : null;
 }
