@@ -11,9 +11,7 @@ export default function HomePage() {
         Certification Prep
       </h1>
 
-      <div className="flex items-center justify-center gap-5">
-        <ButtonActions />
-      </div>
+      <ButtonActions />
     </>
   );
 }

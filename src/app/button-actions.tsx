@@ -24,7 +24,7 @@ export function ButtonActions() {
       className={`grid gap-5 sm:gap-4 ${
         hasMistakes && hasProgress
           ? "grid-cols-1 sm:grid-cols-2"
-          : "grid-cols-2"
+          : "sm:grid-cols-2"
       }`}
     >
       <Button asChild size="lg">
