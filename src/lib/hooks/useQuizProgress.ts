@@ -64,11 +64,8 @@ export function useQuizProgress(): QuizProgress {
       setCurrentQuestionIndex(parseInt(savedProgress, 10));
       setHasProgress(true);
     }
-    if (savedMistakes?.length) {
-      console.log(savedMistakes.length);
-      console.log("this were the savedMistakes");
-      setHasMistakes(true);
-    }
+    if (savedMistakes?.length) setHasMistakes(true);
+
     setLoading(false);
   }, [savedProgress, savedMistakes]);
 
