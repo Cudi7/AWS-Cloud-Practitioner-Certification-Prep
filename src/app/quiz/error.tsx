@@ -15,7 +15,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <Card className="mx-auto my-20 max-w-xl dark:bg-gray-800">
+    <Card className="mx-auto max-w-xl dark:bg-gray-800">
       <CardHeader>
         <CardTitle>Oops! Something went wrong</CardTitle>
       </CardHeader>

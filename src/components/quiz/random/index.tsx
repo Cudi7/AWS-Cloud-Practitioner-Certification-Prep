@@ -15,6 +15,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useQuizMistakes } from "@/lib/hooks/useQuizProgress";
 
 export default function RandomQuizComponent({
   questionsArray,
@@ -26,6 +27,8 @@ export default function RandomQuizComponent({
   const [showAnswer, setShowAnswer] = useState(false);
   const [showClue, setShowClue] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+
+  const { addMistake, removeMistake } = useQuizMistakes();
 
   const titleRef = useRef<HTMLDivElement>(null);
   const answerSectionRef = useRef<HTMLDivElement>(null);
@@ -62,6 +65,10 @@ export default function RandomQuizComponent({
       : selectedOptions[0] === answer;
 
     setIsCorrect(correctAnswer);
+
+    correctAnswer
+      ? removeMistake(currentQuestion.id)
+      : addMistake(currentQuestion.id);
 
     setTimeout(() => {
       answerSectionRef.current?.scrollIntoView({ behavior: "smooth" });

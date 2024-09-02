@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Play, RefreshCw, Shuffle } from "lucide-react";
+import { Play, RefreshCw, RotateCw, Shuffle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,12 +14,19 @@ import {
 import { useQuizProgress } from "@/lib/hooks/useQuizProgress";
 
 export function ButtonActions() {
-  const { hasProgress, loading, resetProgress } = useQuizProgress();
+  const { hasProgress, loading, resetProgress, hasMistakes } =
+    useQuizProgress();
 
   if (loading) return <LoadingSpinner />;
 
   return (
-    <div className="flex flex-col gap-5 sm:flex-row sm:gap-4">
+    <div
+      className={`grid gap-5 sm:gap-4 ${
+        hasMistakes && hasProgress
+          ? "grid-cols-1 sm:grid-cols-2"
+          : "grid-cols-2"
+      }`}
+    >
       <Button asChild size="lg">
         <Link href="/quiz">
           {hasProgress ? "Resume Quiz" : "Start Quiz"}
@@ -32,33 +39,39 @@ export function ButtonActions() {
           <Shuffle className="ml-2" size={20} />
         </Link>
       </Button>
+      {hasMistakes ? (
+        <Button asChild size="lg" variant={"emphasized"}>
+          <Link href="/quiz/mistakes">
+            Practice Mistakes
+            <RotateCw className="ml-2" size={20} />
+          </Link>
+        </Button>
+      ) : null}
       {hasProgress ? (
-        <>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button size="lg" variant="secondary">
-                Reset Progress
-                <RefreshCw className="ml-2" size={20} />
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader>
-                <DialogTitle>Reset Quiz Progress</DialogTitle>
-                <DialogDescription>
-                  This action will permanently delete all your saved progress
-                  for the quiz. You won&#39;t be able to undo this. Are you sure
-                  you want to proceed?
-                </DialogDescription>
-              </DialogHeader>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button size="lg" variant="secondary">
+              Reset Progress
+              <RefreshCw className="ml-2" size={20} />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Reset Quiz Progress</DialogTitle>
+              <DialogDescription>
+                This action will permanently delete all your saved progress for
+                the quiz. You won&#39;t be able to undo this. Are you sure you
+                want to proceed?
+              </DialogDescription>
+            </DialogHeader>
 
-              <DialogFooter>
-                <Button onClick={resetProgress} variant="destructive">
-                  Confirm Reset
-                </Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
-        </>
+            <DialogFooter>
+              <Button onClick={resetProgress} variant="destructive">
+                Confirm Reset
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
       ) : null}
     </div>
   );

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect, useId } from "react";
+import { useState, useRef, useMemo } from "react";
 import { Lightbulb, ArrowRight, Check } from "lucide-react";
-import { type UserRanking, type Question } from "@/app/data";
+import { type Question } from "@/app/data";
 import QuizAnswer from "@/components/quiz/answer";
 import QuizQuestion from "@/components/quiz/question";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -17,7 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useQuizMistakes } from "@/lib/hooks/useQuizProgress";
 
-export default function QuizComponent({
+export default function MistakesQuizComponent({
   questionsArray,
 }: {
   questionsArray: Question[];
@@ -27,23 +27,21 @@ export default function QuizComponent({
   const [showAnswer, setShowAnswer] = useState(false);
   const [showClue, setShowClue] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [loading, setLoading] = useState(true);
 
-  const { addMistake, removeMistake } = useQuizMistakes();
+  const { mistakes, removeMistake } = useQuizMistakes();
 
-  const userId = useId();
   const titleRef = useRef<HTMLDivElement>(null);
   const answerSectionRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const savedProgress = localStorage.getItem("quizProgress");
+  const filteredQuestions = useMemo(
+    () => questionsArray.filter((question) => mistakes.includes(question.id)),
+    [questionsArray, mistakes],
+  );
 
-    if (savedProgress) setCurrentQuestionIndex(parseInt(savedProgress, 10));
+  if (filteredQuestions.length === 0)
+    return <div>No mistakes to review! 🥳🎉</div>;
 
-    setLoading(false);
-  }, []);
-
-  const currentQuestion = questionsArray[currentQuestionIndex ?? 0]!;
+  const currentQuestion = filteredQuestions[currentQuestionIndex]!;
 
   const handleOptionChange = (option: string) => {
     if (showAnswer) return;
@@ -71,84 +69,25 @@ export default function QuizComponent({
 
     setIsCorrect(correctAnswer);
 
-    correctAnswer
-      ? removeMistake(currentQuestion.id)
-      : addMistake(currentQuestion.id);
-
     setTimeout(() => {
       answerSectionRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 0);
   };
 
   const handleNextQuestion = () => {
-    saveRanting();
-    saveProgress();
+    if (isCorrect) removeMistake(currentQuestion.id);
 
     setShowAnswer(false);
     setSelectedOptions([]);
     setIsCorrect(null);
     setShowClue(false);
 
-    const nextQuestionIndex =
-      (currentQuestionIndex + 1) % questionsArray.length;
-    setCurrentQuestionIndex(nextQuestionIndex);
-    localStorage.setItem("quizProgress", nextQuestionIndex.toString());
+    setCurrentQuestionIndex(0);
 
     setTimeout(() => {
       titleRef.current?.scrollIntoView({ behavior: "smooth" });
     }, 0);
   };
-
-  const saveProgress = () => {
-    const nextQuestionIndex =
-      (currentQuestionIndex + 1) % questionsArray.length;
-    setCurrentQuestionIndex(nextQuestionIndex);
-    localStorage.setItem("quizProgress", nextQuestionIndex.toString());
-  };
-
-  const saveRanting = () => {
-    const userRanking = JSON.parse(
-      localStorage.getItem("quizRating") ?? "{}",
-    ) as UserRanking;
-
-    const total = (userRanking.total || 0) + 1;
-    const correct = isCorrect
-      ? (userRanking.correct || 0) + 1
-      : userRanking.correct || 0;
-    const incorrect = !isCorrect
-      ? (userRanking.incorrect || 0) + 1
-      : userRanking.incorrect || 0;
-
-    const progressData = {
-      userId,
-      total,
-      correct,
-      incorrect,
-    };
-
-    localStorage.setItem("quizRating", JSON.stringify(progressData));
-    window.dispatchEvent(new Event("ratingUpdated"));
-  };
-
-  if (loading) {
-    return (
-      <div className="w-full max-w-xl rounded-md border border-slate-300 p-4 shadow dark:border-slate-600">
-        <div className="flex animate-pulse space-x-4">
-          <div className="h-10 w-10 rounded-full bg-slate-300 dark:bg-slate-600"></div>
-          <div className="flex-1 space-y-6 py-1">
-            <div className="h-2 rounded bg-slate-300 dark:bg-slate-600"></div>
-            <div className="space-y-3">
-              <div className="grid grid-cols-3 gap-4">
-                <div className="col-span-2 h-2 rounded bg-slate-300 dark:bg-slate-600"></div>
-                <div className="col-span-1 h-2 rounded bg-slate-300 dark:bg-slate-600"></div>
-              </div>
-              <div className="h-2 rounded bg-slate-300 dark:bg-slate-600"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <Card ref={titleRef} className="max-w-lg dark:bg-gray-800">

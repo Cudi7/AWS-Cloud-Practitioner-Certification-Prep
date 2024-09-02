@@ -1,8 +1,8 @@
 import { env } from "@/env";
 import { type Question, QuestionsArraySchema } from "@/app/data";
-import RandomQuizComponent from "@/components/quiz/random";
+import MistakesQuizComponent from "@/components/quiz/mistakes/page";
 
-export default async function RandomQuiz() {
+export default async function MistakesQuiz() {
   const res = await fetch(env.QUIZ_DATA_URL);
 
   if (!res.ok) throw new Error("Failed to fetch quiz data");
@@ -16,7 +16,7 @@ export default async function RandomQuiz() {
   return (
     <>
       <div className="relative flex-col items-center justify-center">
-        <RandomQuizComponent questionsArray={questionsArray} />
+        <MistakesQuizComponent questionsArray={questionsArray} />
       </div>
     </>
   );
