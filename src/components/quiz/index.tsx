@@ -112,9 +112,11 @@ export default function QuizComponent({
     ) as UserRating;
 
     const total = (userRating.total || 0) + 1;
+
     const correct = isCorrect
       ? (userRating.correct || 0) + 1
       : userRating.correct || 0;
+
     const incorrect = !isCorrect
       ? (userRating.incorrect || 0) + 1
       : userRating.incorrect || 0;
