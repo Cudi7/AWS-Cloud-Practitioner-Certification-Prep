@@ -1,6 +1,6 @@
-# AWS CLF-C02 Quiz App ☁️
+# AWS Cloud Practitioner Certification (CLF-C02) Quiz App ☁️
 
-Welcome to the **AWS Cloud Practitioner Certification (CLF-C02) Quiz App**! 🎉
+Welcome to the **AWS CLF-C02 Quiz App**! 🎉
 
 This app is designed to help you (and me!) prepare for the AWS Cloud Practitioner Certification exam by providing quiz questions that cover key topics. It’s built using the [**T3 Stack**](https://create.t3.gg/) as a boilerplate, leveraging the power of **Next.js App Router**, **TypeScript**, and **Tailwind CSS**. 🌐
 
