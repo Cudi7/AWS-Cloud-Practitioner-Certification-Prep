@@ -14,7 +14,7 @@ export default function About() {
             href="https://github.com/Cudi7"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline dark:text-blue-400"
+            className="text-indigo-500 hover:underline dark:text-indigo-400"
           >
             Cudi
           </a>
@@ -36,7 +36,7 @@ export default function About() {
             href="https://www.linkedin.com/in/cudi7"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline dark:text-blue-400"
+            className="text-indigo-500 hover:underline dark:text-indigo-400"
           >
             LinkedIn
           </a>{" "}
@@ -45,7 +45,7 @@ export default function About() {
             href="https://github.com/Cudi7/AWS-Cloud-Practitioner-Certification-Prep"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline dark:text-blue-400"
+            className="text-indigo-500 hover:underline dark:text-indigo-400"
           >
             GitHub
           </a>

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useId } from "react";
 import { Lightbulb, ArrowRight, Check } from "lucide-react";
-import { type UserRanking, type Question } from "@/app/data";
+import { type UserRating, type Question } from "@/app/data";
 import QuizAnswer from "@/components/quiz/answer";
 import QuizQuestion from "@/components/quiz/question";
 import { Alert, AlertDescription } from "@/components/ui/alert";
@@ -81,7 +81,7 @@ export default function QuizComponent({
   };
 
   const handleNextQuestion = () => {
-    saveRanting();
+    saveRating();
     saveProgress();
 
     setShowAnswer(false);
@@ -106,18 +106,18 @@ export default function QuizComponent({
     localStorage.setItem("quizProgress", nextQuestionIndex.toString());
   };
 
-  const saveRanting = () => {
-    const userRanking = JSON.parse(
+  const saveRating = () => {
+    const userRating = JSON.parse(
       localStorage.getItem("quizRating") ?? "{}",
-    ) as UserRanking;
+    ) as UserRating;
 
-    const total = (userRanking.total || 0) + 1;
+    const total = (userRating.total || 0) + 1;
     const correct = isCorrect
-      ? (userRanking.correct || 0) + 1
-      : userRanking.correct || 0;
+      ? (userRating.correct || 0) + 1
+      : userRating.correct || 0;
     const incorrect = !isCorrect
-      ? (userRanking.incorrect || 0) + 1
-      : userRanking.incorrect || 0;
+      ? (userRating.incorrect || 0) + 1
+      : userRating.incorrect || 0;
 
     const progressData = {
       userId,

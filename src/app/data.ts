@@ -10,7 +10,7 @@ const QuestionSchema = z.object({
   clue: z.string(),
 });
 
-const UserRankingSchema = z.object({
+const UserRatingSchema = z.object({
   total: z.number(),
   correct: z.number(),
   incorrect: z.number(),
@@ -26,7 +26,7 @@ export interface QuizRating {
 export const QuestionsArraySchema = z.array(QuestionSchema);
 
 export type Question = z.infer<typeof QuestionSchema>;
-export type UserRanking = z.infer<typeof UserRankingSchema>;
+export type UserRating = z.infer<typeof UserRatingSchema>;
 
 // Utility function to shuffle an array using the Fisher-Yates algorithm
 export function shuffleArray(array: Question[]): Question[] {
