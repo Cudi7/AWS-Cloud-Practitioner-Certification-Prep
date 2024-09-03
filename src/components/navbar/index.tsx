@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 
-import { DropdownMenuDemo } from "@/components/navbar/dropdown-menu";
+import { DropdownMenuMobile } from "@/components/navbar/dropdown-menu-mobile";
 import { ModeToggle } from "@/components/shared/mode-toggle";
+import { DropdownMenuQuiz } from "@/components/navbar/dropdown-menu-quiz";
 
 export function Navbar() {
   return (
@@ -40,12 +41,14 @@ export function Navbar() {
           >
             Home
           </Link>
-          <Link
+          {/* <Link
             className="text-sm font-semibold hover:text-indigo-500 dark:hover:text-indigo-400"
             href="/rankings"
           >
             Rankings
-          </Link>
+          </Link> */}
+          <DropdownMenuQuiz />
+
           <Link
             className="text-sm font-semibold hover:text-indigo-500 dark:hover:text-indigo-400"
             href="/about"
@@ -84,7 +87,7 @@ export function Navbar() {
           </a>
         </div>
         <div className="flex md:hidden">
-          <DropdownMenuDemo />
+          <DropdownMenuMobile />
         </div>
       </div>
     </div>

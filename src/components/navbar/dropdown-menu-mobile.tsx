@@ -1,6 +1,6 @@
-import { Home, Info, List, Menu } from "lucide-react"; // External library import
+import { Home, Info, Menu, RotateCw } from "lucide-react";
 
-import { Button } from "@/components/ui/button"; // UI components
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,10 +10,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { ModeToggle } from "@/components/shared/mode-toggle"; // Local component import
+import { ModeToggle } from "@/components/shared/mode-toggle";
 import Link from "next/link";
 
-export function DropdownMenuDemo() {
+export function DropdownMenuMobile() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -22,7 +22,6 @@ export function DropdownMenuDemo() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
         <DropdownMenuGroup>
           <DropdownMenuItem asChild>
             <Link
@@ -36,10 +35,10 @@ export function DropdownMenuDemo() {
           <DropdownMenuItem asChild>
             <Link
               className="text-sm font-semibold leading-6 hover:text-indigo-500 dark:hover:text-indigo-400"
-              href="/rankings"
+              href="/quiz/mistakes"
             >
-              <List className="mr-2 h-4 w-4" />
-              Rankings
+              <RotateCw className="mr-2 h-4 w-4" />
+              Practice Mistakes
             </Link>
           </DropdownMenuItem>
 
