@@ -26,13 +26,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="flex flex-grow flex-col items-center justify-center text-black dark:text-white">
-            <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-              {children}
-
-              <Analytics />
-            </div>
-          </main>
+          {children}
+          <Analytics />
         </ThemeProvider>
         <Footer />
       </body>
