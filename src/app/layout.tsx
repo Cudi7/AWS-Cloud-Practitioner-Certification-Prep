@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { Analytics } from "@vercel/analytics/react";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "AWS Cloud Practitioner Certification Prep",
@@ -30,32 +31,7 @@ export default function RootLayout({
               <Analytics />
             </div>
           </main>
-          <footer className="container w-full flex-shrink-0 pb-6 pt-4 text-center text-xs text-gray-600 dark:text-gray-400">
-            <p className="mx-auto mb-2 max-w-xl">
-              This practice quiz is independently created and is not affiliated
-              with or endorsed by Amazon Web Services{" "}
-              <span className="text-indigo-500 dark:text-indigo-400">
-                (AWS)
-              </span>
-              . It is intended to support those preparing for the AWS Cloud
-              Practitioner{" "}
-              <span className="text-indigo-500 dark:text-indigo-400">
-                (CLF-C02)
-              </span>{" "}
-              exam and is not a replacement for official AWS study materials.
-            </p>
-            <p className="font-semibold">
-              Developed by{" "}
-              <a
-                href="https://www.linkedin.com/in/cudi7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-indigo-500 hover:underline dark:text-indigo-400"
-              >
-                Cudi
-              </a>
-            </p>
-          </footer>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
