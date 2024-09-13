@@ -1,4 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
+
+body {
+  @apply flex min-h-full flex-col bg-white antialiased dark:bg-gray-900;
+}
