@@ -1,3 +1,5 @@
+import "server-only";
+
 import { type Question, QuestionsArraySchema } from "@/app/data";
 
 export async function fetchQuizData(url: string): Promise<Question[]> {
