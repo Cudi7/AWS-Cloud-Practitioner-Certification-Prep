@@ -19,21 +19,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body className="flex min-h-screen flex-col dark:bg-gray-900">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-
-          <main className="flex flex-grow flex-col items-center justify-center text-black dark:text-white">
-            <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
+        <Navbar />
+        <main className="flex flex-grow flex-col items-center justify-center text-black dark:text-white">
+          <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
               {children}
-              <Analytics />
-            </div>
-          </main>
-        </ThemeProvider>
+            </ThemeProvider>
+
+            <Analytics />
+          </div>
+        </main>
         <Footer />
       </body>
     </html>
