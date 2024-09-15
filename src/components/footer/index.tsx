@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="container w-full pb-6 pt-4 text-center text-xs text-gray-600 dark:text-gray-400">
+    <footer className="container w-full pb-6 pt-16 text-center text-xs text-gray-600 dark:text-gray-400">
       <p className="mx-auto mb-2 max-w-xl">
         This practice quiz is independently created and is not affiliated with
         or endorsed by Amazon Web Services{" "}
