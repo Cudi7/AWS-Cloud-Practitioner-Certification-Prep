@@ -1,20 +1,21 @@
 "use client";
 
-import { useState, useRef, useMemo } from "react";
-import { Lightbulb, ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Lightbulb } from "lucide-react";
+import { useMemo, useRef, useState } from "react";
+
 import { type Question, shuffleArray } from "@/app/data";
 import QuizAnswer from "@/components/quiz/answer";
 import QuizQuestion from "@/components/quiz/question";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-  CardDescription,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { useQuizMistakes } from "@/lib/hooks/useQuizProgress";
 
 export default function RandomQuizComponent({

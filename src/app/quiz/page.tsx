@@ -1,6 +1,6 @@
-import { env } from "@/env";
 import QuizComponent from "@/components/quiz";
 import RatingComponent from "@/components/quiz/rating";
+import { env } from "@/env";
 import { fetchQuizData } from "@/lib/fetchQuizData";
 
 export default async function Quiz() {

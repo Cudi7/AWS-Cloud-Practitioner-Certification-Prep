@@ -1,11 +1,12 @@
 import "@/styles/globals.css";
 
+import { Analytics } from "@vercel/analytics/react";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+
+import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/shared/theme-provider";
-import { Analytics } from "@vercel/analytics/react";
-import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "AWS Cloud Practitioner Certification Prep",

@@ -1,5 +1,7 @@
 import { Home, Info, Menu, RotateCw } from "lucide-react";
+import Link from "next/link";
 
+import { ModeToggle } from "@/components/shared/mode-toggle";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -9,9 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
-import { ModeToggle } from "@/components/shared/mode-toggle";
-import Link from "next/link";
 
 export function DropdownMenuMobile() {
   return (

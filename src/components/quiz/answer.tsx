@@ -1,7 +1,8 @@
+import { AlertCircle, CheckCircle } from "lucide-react";
 import { useState } from "react";
-import { CheckCircle, AlertCircle } from "lucide-react";
+
 import { type Question } from "@/app/data";
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 type QuizAnswerProps = Pick<Question, "answer" | "explanation"> & {
   isCorrect: boolean | null;

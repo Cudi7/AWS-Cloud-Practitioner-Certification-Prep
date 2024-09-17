@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Error({

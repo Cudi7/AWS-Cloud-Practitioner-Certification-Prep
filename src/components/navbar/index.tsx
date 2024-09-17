@@ -2,8 +2,8 @@
 import Link from "next/link";
 
 import { DropdownMenuMobile } from "@/components/navbar/dropdown-menu-mobile";
-import { ModeToggle } from "@/components/shared/mode-toggle";
 import { DropdownMenuQuiz } from "@/components/navbar/dropdown-menu-quiz";
+import { ModeToggle } from "@/components/shared/mode-toggle";
 
 export function Navbar() {
   return (

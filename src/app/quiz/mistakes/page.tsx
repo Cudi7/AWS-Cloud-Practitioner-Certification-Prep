@@ -1,5 +1,5 @@
-import { env } from "@/env";
 import MistakesQuizComponent from "@/components/quiz/mistakes";
+import { env } from "@/env";
 import { fetchQuizData } from "@/lib/fetchQuizData";
 
 export default async function MistakesQuiz() {
