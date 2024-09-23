@@ -1,6 +1,12 @@
+import { auth } from "@clerk/nextjs/server";
 import { ButtonActions } from "./button-actions";
 
 export default function HomePage() {
+  // const user = auth();
+
+  // if (user.userId) {
+  //   console.log(user);
+  // }
   return (
     <>
       <h1 className="text-center text-2xl font-extrabold tracking-tight text-black dark:text-white">

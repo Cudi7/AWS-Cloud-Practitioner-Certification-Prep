@@ -8,6 +8,11 @@ import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 
+import {
+  ClerkProvider,
+ 
+} from '@clerk/nextjs'
+
 export const metadata: Metadata = {
   title: "AWS Cloud Practitioner Certification Prep",
   description: "AWS Cloud Practitioner Certification Prep",
@@ -18,6 +23,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
+    <ClerkProvider>
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
         <ThemeProvider
@@ -37,5 +43,6 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
