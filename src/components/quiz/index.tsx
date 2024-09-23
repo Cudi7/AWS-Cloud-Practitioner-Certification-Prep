@@ -16,6 +16,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  incrementRightQuestions,
+  incrementWrongQuestions,
+  selectRightQuestions,
+  selectWrongQuestions,
+} from "@/lib/features/quiz/quizSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks/storeHooks";
 import { useQuizMistakes } from "@/lib/hooks/useQuizProgress";
 
 export default function QuizComponent({
@@ -31,6 +38,9 @@ export default function QuizComponent({
   const [loading, setLoading] = useState(true);
 
   const { addMistake, removeMistake } = useQuizMistakes();
+  const dispatch = useAppDispatch();
+  const correctAnswersCount = useAppSelector(selectRightQuestions);
+  const wrongAnswersCount = useAppSelector(selectWrongQuestions);
 
   const userId = useId();
   const titleRef = useRef<HTMLDivElement>(null);
@@ -75,6 +85,10 @@ export default function QuizComponent({
     correctAnswer
       ? removeMistake(currentQuestion.id)
       : addMistake(currentQuestion.id);
+
+    correctAnswer
+      ? dispatch(incrementRightQuestions())
+      : dispatch(incrementWrongQuestions());
 
     setTimeout(() => {
       answerSectionRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -157,6 +171,8 @@ export default function QuizComponent({
     <Card ref={titleRef} className="max-w-lg dark:bg-gray-800">
       <CardHeader className="flex flex-row justify-between">
         <div>
+          <div>{correctAnswersCount}</div>
+          <div>{wrongAnswersCount}</div>
           <CardTitle>Quiz Question</CardTitle>
           <CardDescription className="text-base dark:text-gray-400">
             {currentQuestion.multiSelect ? "Multiple Answers" : "Single Answer"}

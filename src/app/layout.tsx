@@ -8,10 +8,8 @@ import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 
-import {
-  ClerkProvider,
- 
-} from '@clerk/nextjs'
+import { ClerkProvider } from "@clerk/nextjs";
+import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
   title: "AWS Cloud Practitioner Certification Prep",
@@ -24,25 +22,27 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <ClerkProvider>
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <main className="flex flex-grow flex-col items-center justify-center text-black dark:text-white">
-            <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-              {children}
-              <Analytics />
-            </div>
-          </main>
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
+      <StoreProvider>
+        <html lang="en" className={`${GeistSans.variable}`}>
+          <body>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Navbar />
+              <main className="flex flex-grow flex-col items-center justify-center text-black dark:text-white">
+                <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
+                  {children}
+                  <Analytics />
+                </div>
+              </main>
+              <Footer />
+            </ThemeProvider>
+          </body>
+        </html>
+      </StoreProvider>
     </ClerkProvider>
   );
 }
