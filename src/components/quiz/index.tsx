@@ -17,8 +17,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
-  incrementRightQuestions,
-  incrementWrongQuestions,
+  incrementRightQuestion,
+  incrementWrongQuestion,
   selectRightQuestions,
   selectWrongQuestions,
 } from "@/lib/features/quiz/quizSlice";
@@ -87,8 +87,8 @@ export default function QuizComponent({
       : addMistake(currentQuestion.id);
 
     correctAnswer
-      ? dispatch(incrementRightQuestions())
-      : dispatch(incrementWrongQuestions());
+      ? dispatch(incrementRightQuestion())
+      : dispatch(incrementWrongQuestion());
 
     setTimeout(() => {
       answerSectionRef.current?.scrollIntoView({ behavior: "smooth" });

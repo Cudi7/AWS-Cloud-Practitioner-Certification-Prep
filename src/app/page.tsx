@@ -1,4 +1,5 @@
-import { auth } from "@clerk/nextjs/server";
+// import { auth } from "@clerk/nextjs/server";
+
 import { ButtonActions } from "./button-actions";
 
 export default function HomePage() {
