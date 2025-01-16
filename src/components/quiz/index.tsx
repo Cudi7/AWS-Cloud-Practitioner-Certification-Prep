@@ -171,8 +171,8 @@ export default function QuizComponent({
     <Card ref={titleRef} className="max-w-lg dark:bg-gray-800">
       <CardHeader className="flex flex-row justify-between">
         <div>
-          <div>{correctAnswersCount}</div>
-          <div>{wrongAnswersCount}</div>
+          {/* <div>{correctAnswersCount}</div>
+          <div>{wrongAnswersCount}</div> */}
           <CardTitle>Quiz Question</CardTitle>
           <CardDescription className="text-base dark:text-gray-400">
             {currentQuestion.multiSelect ? "Multiple Answers" : "Single Answer"}
